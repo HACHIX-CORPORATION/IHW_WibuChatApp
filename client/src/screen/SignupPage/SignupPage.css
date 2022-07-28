@@ -1,0 +1,180 @@
+.success__pop-up {
+	display: none;
+	position: absolute;
+	width: 60%;
+	height: 40%;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.349);
+}
+
+.register__form-infos {
+	width: 100%;
+}
+
+.register {
+	position: relative;
+	display: flex;
+	background-image: url("../../assets/register_bgr.webp");
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(158, 153, 153, 0.5);
+}
+
+.register__form {
+	border-radius: 5px;
+	margin: auto;
+	background-color: #36393f;
+	width: 40%;
+	/* height: 80%; */
+}
+
+.register__form-header {
+	font-weight: 800;
+	margin-top: 3%;
+	text-align: center;
+	font-family: cursive;
+	color: aliceblue;
+}
+
+.register__form-info {
+	display: flex;
+}
+
+.register__form-info__tab {
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+}
+.register__form-info__tab1 {
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+}
+.register__form-info__tab2 {
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 40%;
+	justify-content: space-between;
+}
+.register__avatar-selectbox {
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	width: 90%;
+	height: 70%;
+	background-color: #212122;
+	margin-bottom: 20px;
+	border: 2px solid rgba(255, 255, 255, 0.322);
+	border-radius: 5px;
+}
+.register__avatar-selectbox img {
+	width: 30%;
+	height: 20%;
+	z-index: 10;
+	cursor: pointer;
+}
+
+img {
+	border: 2px double gainsboro;
+	border-radius: 50%;
+	margin: auto;
+	width: 40%;
+	height: 20%;
+}
+h4 {
+	margin-bottom: 5px;
+	font-size: 14px;
+	margin-top: 15px;
+}
+
+input {
+	height: 36px;
+	font-size: 16px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #212122;
+	width: 90%;
+}
+
+form {
+	color: #b9bbbe;
+	display: flex;
+	justify-content: center;
+}
+
+.register__form-birthday {
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.submit-button {
+	/* display: none; */
+	margin-top: 20px;
+	color: #fff;
+	padding: 5px 0;
+}
+
+.submit-button:hover {
+	background-color: #5865f2c4;
+}
+
+.submit-button:disabled {
+	background-color: rgb(117, 117, 117);
+}
+
+#birthday {
+	height: 36px;
+	font-size: 14px;
+}
+
+a {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* margin-top: 20px; */
+	color: #00aff4;
+	text-decoration-style: none;
+	font-size: 12px;
+}
+
+span {
+	color: #00aff4;
+	text-decoration-style: none;
+	font-size: 12px;
+}
+
+p {
+	text-align: center;
+	padding-top: 10px;
+	font-size: 12px;
+	color: #b9bbbe;
+}
+
+.register__footer {
+	margin-top: 20px;
+}
+
+.submit__checkbox {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.submit__checkbox input {
+	display: flex;
+	width: 20px;
+	height: 20px;
+}
+
+.submit__checkbox p {
+	padding-top: 0;
+	text-align: left;
+	display: inline-block;
+	font-size: 14px;
+	width: 90%;
+}
