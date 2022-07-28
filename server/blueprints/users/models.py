@@ -8,7 +8,7 @@ class UserModel(db.Model):
     rePassword = db.Column(db.String(40))
     telephone = db.Column(db.String(40))
     mail = db.Column(db.String(40))
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String(40))
     avatar = db.Column(db.String(40))
 
     

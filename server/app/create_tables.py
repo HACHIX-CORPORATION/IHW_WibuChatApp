@@ -12,7 +12,7 @@ users = Table('users' , metadata,
     Column('rePassword' , String(40)),
     Column('telephone' , String(40)),
     Column('mail' , String(40)),
-    Column('date' , DateTime),
+    Column('date' , String(40)),
     Column('avatar' , String(40)),
 )
 

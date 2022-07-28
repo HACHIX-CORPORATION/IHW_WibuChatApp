@@ -29,6 +29,20 @@ def login():
         user =  UserModel.find_by_name(data['username'])
         if user is None :
             raise ValueError("The user not found")
+        
+        if user and hmac.compare_digest(user.password , data['password']):
+            return {
+                'message' : 'login success',
+                'id' : user.id
+                }
+        else :
+            raise ValueError("incorrect password")
+
+    except Exception as ex:
+        db.session.rollback()
+        raise ex
+    finally :
+        db.session.close()
 
 
     
