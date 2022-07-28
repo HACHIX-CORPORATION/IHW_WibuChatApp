@@ -41,6 +41,13 @@ def login():
         }
     return jsonify(content)
 
+@user_master.route('/<user_id>', methods=['GET'])
+def get_user_ID(user_id):
+    user_id = int(user_id)
+    user = user_ctrl.get_user_by_id(user_id)
+    return user
+
+
 
 
 

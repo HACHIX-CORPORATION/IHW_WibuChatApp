@@ -44,6 +44,24 @@ def login():
     finally :
         db.session.close()
 
+# def get_user_by_id(user_id: int):
+
+    
+
+#     user = UserModel.query.filter_by(id = user_id).first()
+#     if user is None:
+#         return {}
+
+#     return user.json()
+
+
+def get_user_by_id(user_id: int):
+    user = UserModel.find_by_id(user_id)
+    if user :
+        return user.json()
+    return {'message' : 'The user not found'}
+
+
 
     
 

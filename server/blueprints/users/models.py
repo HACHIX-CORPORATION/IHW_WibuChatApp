@@ -20,6 +20,9 @@ class UserModel(db.Model):
         self.mail = mail
         self.date = date
         self.avatar = avatar
+
+    def json(self):
+        return {'id' : self.id , 'username' : self.username , 'rePassword' : self.rePassword , 'telephone' : self.telephone , 'mail' : self.mail , 'date': self.date , 'avatar' : self.date}
       
     def save_to_db(self):
         db.session.add(self)
