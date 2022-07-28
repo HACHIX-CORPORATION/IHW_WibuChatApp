@@ -5,54 +5,59 @@
       <div class="register__form-infos">
         <div class="register__form-info">
           <div class="register__form-info__tab">
-            <div class="register__form-info__tab1">
-              <h4>Username</h4>
-              <input
-                type="text"
-                placeholder=""
-                name="text1"
-                v-model="userName"
-              />
-              <h4>Password</h4>
-              <input
-                title="Password must contains 8 to 16 characters, an UPPERCASE and at least one special character! "
-                type="password"
-                placeholder=""
-                v-model="passWord"
-              />
-              <h4>rePassword</h4>
-              <input type="password" placeholder="" v-model="repassWord" />
-              <h4>Telephone</h4>
-              <input type="text" placeholder="" v-model="telephoneNum" />
-              <h4>Mail</h4>
-              <input type="email" placeholder="" v-model="mailAdd" />
-              <div class="register__form-birthday">
-                <h4 for="birthday">Birthday</h4>
+            <div class="register__form-info__tab-container">
+              <div class="register__form-info__tab1">
+                <h4>Username</h4>
                 <input
-                  type="date"
-                  id="birthday"
-                  name="birthday"
-                  v-model="dobInfo"
+                  type="text"
+                  placeholder=""
+                  name="text1"
+                  v-model="userName"
                 />
+                <h4>Password</h4>
+                <input
+                  title="Password must contains 8 to 16 characters, an UPPERCASE and at least one special character! "
+                  type="password"
+                  placeholder=""
+                  v-model="passWord"
+                />
+                <h4>rePassword</h4>
+                <input type="password" placeholder="" v-model="repassWord" />
+                <h4>Telephone</h4>
+                <input type="text" placeholder="" v-model="telephoneNum" />
+                <h4>Mail</h4>
+                <input type="email" placeholder="" v-model="mailAdd" />
+                <div class="register__form-birthday">
+                  <h4 for="birthday">Birthday</h4>
+                  <input
+                    type="date"
+                    id="birthday"
+                    name="birthday"
+                    v-model="dobInfo"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="register__form-info__tab2">
-              <img
-                class="register__avatar-preview"
-                :src="require(`../../assets/${imagePreview}`)"
-                alt="choose avatar"
-              />
-              <div class="register__avatar-selectbox">
+              <div class="register__form-info__tab2">
+                <caption>
+                  Choose your waifu
+                </caption>
                 <img
-                  v-for="image in images"
-                  :key="image.id"
-                  :src="require(`../../assets/${image.url}`)"
-                  alt=""
-                  @click="chooseAva"
+                  class="register__avatar-preview"
+                  :src="require(`../../assets/${imagePreview}`)"
+                  alt="choose avatar"
                 />
+                <div class="register__avatar-selectbox">
+                  <img
+                    v-for="image in images"
+                    :key="image.url"
+                    :src="require(`../../assets/${image.url}`)"
+                    alt=""
+                    @click="chooseAva(image.url)"
+                  />
+                </div>
               </div>
             </div>
-            <!-- <div class="submit__checkbox">
+            <div class="submit__checkbox">
               <input type="checkbox" v-on:click="displaySubmit" />
               <p>
                 I agree to the Terms and Conditions and the Privacy Policy of
@@ -65,7 +70,7 @@
               @click="doneRegister"
             >
               Submit
-            </button> -->
+            </button>
           </div>
         </div>
       </div>

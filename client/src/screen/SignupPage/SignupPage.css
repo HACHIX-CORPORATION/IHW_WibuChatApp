@@ -43,7 +43,7 @@
 .register__form-info__tab {
 	color: #b9bbbe;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-evenly;
 	width: 100%;
 }
@@ -61,6 +61,10 @@
 	width: 40%;
 	justify-content: space-between;
 }
+caption {
+	text-align: center;
+	padding: 0;
+}
 .register__avatar-selectbox {
 	margin: auto;
 	display: flex;
@@ -77,6 +81,11 @@
 	height: 20%;
 	z-index: 10;
 	cursor: pointer;
+}
+.register__form-info__tab-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 img {
@@ -113,12 +122,15 @@ form {
 }
 
 .submit-button {
-	/* display: none; */
+	width: 90%;
 	margin-top: 20px;
 	color: #fff;
 	padding: 5px 0;
+	margin: auto;
 }
-
+.register__avatar-preview {
+	margin: 10px auto;
+}
 .submit-button:hover {
 	background-color: #5865f2c4;
 }
@@ -163,6 +175,7 @@ p {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	padding-left: 5%;
 }
 
 .submit__checkbox input {

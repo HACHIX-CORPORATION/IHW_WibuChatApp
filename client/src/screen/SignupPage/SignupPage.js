@@ -3,12 +3,12 @@ export default {
 	components: {},
 	data() {
 		return {
-			userName: "",
-			passWord: "",
-			repassWord: "",
-			telephoneNum: "",
-			mailAdd: "",
-			dobInfo: "",
+			userName: "thanhduy",
+			passWord: "Hackifucan1!",
+			repassWord: "Hackifucan1!",
+			telephoneNum: "234234234243",
+			mailAdd: "duy@gmail.com",
+			dobInfo: "1998-09-11",
 			disableBtn: true,
 			imagePreview: "02.jpg",
 			images: [
@@ -53,13 +53,11 @@ export default {
 	},
 
 	methods: {
-		chooseAva() {
-			console.log(this.images.id);
-			// this.imagePreview = this.images.url;
+		chooseAva(data) {
+			console.log("shajkdhasjkhdashkdsja", data);
+			this.imagePreview = data;
 		},
-
 		displaySubmit() {
-			// console.log(image.src)
 			this.disableBtn = !this.disableBtn;
 		},
 		// check All input field
@@ -103,6 +101,7 @@ export default {
 					// switch page after finish register
 					alert("Register successfully, go to login page");
 					window.location = "/login";
+					// console.log(typeof this.dobInfo);
 				}
 			}
 		},
