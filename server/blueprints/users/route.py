@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from blueprints.users import controller as user_ctrl
 
 
-user_master: Blueprint = Blueprint('user_master', __name__ , url_prefix='/user')
+user_master: Blueprint = Blueprint('user_master', __name__ , url_prefix='/api/user')
 
 @user_master.route('/register' , methods=['POST'])
 def register():
@@ -47,6 +47,10 @@ def get_user_ID(user_id):
     user = user_ctrl.get_user_by_id(user_id)
     return user
 
+@user_master.route('/all', methods=['GET'])
+def getall():
+    result = user_ctrl.get_all_users()
+    return result
 
 
 
