@@ -1,13 +1,12 @@
-import { createApp } from 'vue'
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+import App from "./App.vue";
+import router from "./router";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
-// import {BootstrapVue, IconsPlugin} from "bootstrap-vue"
-// import { fromCodePoint } from 'core-js/core/string'
-// Vue.use(router)
+library.add(fas);
 
-const Vue = createApp(App)
-Vue.use(router)
-Vue.mount('#app')
+createApp(App).component("fa", FontAwesomeIcon).use(router).mount("#app");

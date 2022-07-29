@@ -8,8 +8,28 @@
             <div class="login__form-info__tab">
               <h4>Username</h4>
               <input type="text" placeholder="" />
-              <h4>Password</h4>
-              <input type="text" placeholder="" />
+              <div id="password-section">
+                <h4>Password</h4>
+                <input
+                  v-if="showPassword"
+                  type="text"
+                  placeholder=""
+                  v-model="password"
+                />
+                <input
+                  v-else
+                  type="password"
+                  class="input"
+                  v-model="password"
+                />
+
+                <fa
+                  id="fas"
+                  icon="eye"
+                  @click="toggleShow"
+                  :class="{ isShow: showPassword, isHide: !showPassword }"
+                />
+              </div>
               <button class="submit-button">Login</button>
             </div>
           </div>
@@ -24,10 +44,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      showPassword: false,
+      password: null,
+    };
+  },
+  computed: {},
+  methods: {
+    toggleShow() {
+      this.showPassword = !this.showPassword;
+    },
+  },
+};
 </script>
 
 <style>
+#fas:hover {
+  cursor: pointer;
+  
+}
 .login {
   display: flex;
   background-image: url("../../assets/register_bgr.webp");
