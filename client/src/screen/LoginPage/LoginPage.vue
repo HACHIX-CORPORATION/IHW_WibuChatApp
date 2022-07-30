@@ -68,7 +68,7 @@ export default {
   margin: auto;
   background-color: #36393f;
   width: 40%;
-  height: 30%;
+  height: 40%;
 }
 
 .login__form-infos {
