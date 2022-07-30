@@ -26,6 +26,7 @@
       </form>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -47,7 +48,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #fas:hover {
   cursor: pointer;
 
@@ -56,6 +57,7 @@ export default {
 .login {
   display: flex;
   background-image: url("../../assets/register_bgr.webp");
+  background-size: cover;
   width: 100%;
   height: 100vh;
   background-color: rgba(158, 153, 153, 0.5);
@@ -66,7 +68,7 @@ export default {
   margin: auto;
   background-color: #36393f;
   width: 40%;
-  height: 40%;
+  height: 30%;
 }
 
 .login__form-infos {
