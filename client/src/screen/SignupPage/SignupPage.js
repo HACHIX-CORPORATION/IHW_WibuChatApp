@@ -1,22 +1,7 @@
-import UsernameForm from "@/components/UsernameForm/UsernameForm.vue"
-import PasswordForm from "@/components/PasswordForm/PasswordForm.vue"
-import RepasswordForm from "@/components/RepasswordForm/RepasswordForm.vue"
-import TelephoneForm from "@/components/TelephoneForm/TelephoneForm.vue"
-import MailForm from "@/components/MailForm/MailForm.vue"
-import DobForm from "@/components/DobForm/DobForm.vue"
-
+import FormInput from '../../components/FormInput/FormInput.vue'
 export default {
     name: "SignupPage",
-    components: {
-        UsernameForm,
-        PasswordForm,
-        RepasswordForm,
-        TelephoneForm,
-        MailForm,
-        DobForm,
-
-
-    },
+    components: { FormInput },
     data() {
         return {
             userName: "thanhduy",

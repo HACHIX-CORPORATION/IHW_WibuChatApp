@@ -1,12 +1,12 @@
 <template>
-  <div class="register">
+  <form-input></form-input>
+  <!-- <div class="register">
     <div class="register__form">
       <div class="register__header">LET JOIN US WIBUS</div>
       <div class="register__infos">
         <div class="register__info">
           <div class="register__info--tab">
             <div class="register__infocontainer">
-              <!-- start slit component here -->
               <div class="register__infocontainer--tab1">
                 <UsernameForm />
                 <PasswordForm />
@@ -14,37 +14,8 @@
                 <TelephoneForm />
                 <MailForm />
                 <DobForm />
-
-                <!-- username form -->
-                <!-- <label>Username</label>
-                <input type="text" placeholder="" name="text1" v-model="userName" /> -->
-                <!-- username form -->
-                <!-- password form -->
-                <!-- <label>Password</label>
-                <input
-                  title="Password must contains 8 to 16 characters, an UPPERCASE and at least one special character! "
-                  type="password" placeholder="" v-model="passWord" /> -->
-                <!-- password form -->
-                <!-- repassword form -->
-                <!-- <label>rePassword</label>
-                <input type="password" placeholder="" v-model="repassWord" /> -->
-                <!-- repassword form -->
-                <!-- telephone form -->
-                <!-- <label>Telephone</label>
-                <input type="text" placeholder="" v-model="telephoneNum" /> -->
-                <!-- telephone form -->
-                <!-- mail form -->
-                <!-- <label>Mail</label>
-                <input type="email" placeholder="" v-model="mailAdd" /> -->
-                <!-- mail form -->
-                <!-- dob form -->
-                <!-- <div class="register__form-birthday">
-                  <label form="birthday">Birthday</label>
-                  <input type="date" id="birthday" name="birthday" v-model="dobInfo" />
-                </div> -->
-                <!-- dob form -->
               </div>
-              <!-- end slit component here -->
+
               <div class="register__infocontainer--tab2">
                 <caption>
                   Choose your waifu
@@ -78,11 +49,10 @@
         </p>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script src="./SignupPage.js"></script>
-
 
 <style src="./SignupPage.css" scoped>
 </style>

@@ -10,25 +10,10 @@
               <input type="text" placeholder="" />
               <div id="password-section">
                 <h4>Password</h4>
-                <input
-                  v-if="showPassword"
-                  type="text"
-                  placeholder=""
-                  v-model="password"
-                />
-                <input
-                  v-else
-                  type="password"
-                  class="input"
-                  v-model="password"
-                />
+                <input v-if="showPassword" type="text" placeholder="" v-model="password" />
+                <input v-else type="password" class="input" v-model="password" />
 
-                <fa
-                  id="fas"
-                  icon="eye"
-                  @click="toggleShow"
-                  :class="{ isShow: showPassword, isHide: !showPassword }"
-                />
+                <fa id="fas" icon="eye" @click="toggleShow" :class="{ isShow: showPassword, isHide: !showPassword }" />
               </div>
               <button class="submit-button">Login</button>
             </div>
@@ -45,7 +30,8 @@
 
 <script>
 export default {
-  data() {
+  data()
+  {
     return {
       showPassword: false,
       password: null,
@@ -53,7 +39,8 @@ export default {
   },
   computed: {},
   methods: {
-    toggleShow() {
+    toggleShow()
+    {
       this.showPassword = !this.showPassword;
     },
   },
@@ -63,8 +50,9 @@ export default {
 <style>
 #fas:hover {
   cursor: pointer;
-  
+
 }
+
 .login {
   display: flex;
   background-image: url("../../assets/register_bgr.webp");
@@ -72,6 +60,7 @@ export default {
   height: 100vh;
   background-color: rgba(158, 153, 153, 0.5);
 }
+
 .login__form {
   border-radius: 5px;
   margin: auto;
@@ -79,9 +68,11 @@ export default {
   width: 40%;
   height: 40%;
 }
+
 .login__form-infos {
   width: 80%;
 }
+
 .login__form-header {
   font-weight: 800;
   margin-top: 3%;
@@ -89,17 +80,20 @@ export default {
   font-family: cursive;
   color: aliceblue;
 }
+
 .register__form-info__tab {
   margin: 20px 0;
   color: #b9bbbe;
   display: flex;
   flex-direction: column;
 }
+
 h4 {
   margin-bottom: 5px;
   font-size: 14px;
   margin-top: 15px;
 }
+
 input {
   height: 36px;
   font-size: 16px;
@@ -108,15 +102,18 @@ input {
   background-color: #202225;
   width: 100%;
 }
+
 form {
   color: #b9bbbe;
   display: flex;
   justify-content: center;
 }
+
 .login__form-birthday {
   font-weight: 400;
   margin-bottom: 20px;
 }
+
 .submit-button {
   margin-top: 30px;
   color: #fff;
@@ -126,9 +123,11 @@ form {
   padding: 5px 0;
   width: 100%;
 }
+
 .submit-button:hover {
   background-color: #5865f2c4;
 }
+
 a {
   color: #00aff4;
   text-decoration-style: none;
@@ -136,6 +135,7 @@ a {
 }
 
 .login__footer {
+  width: 100%;
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
