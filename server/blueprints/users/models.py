@@ -12,6 +12,8 @@ class UserModel(db.Model):
     mail = db.Column(db.String(256), nullable=False)
     date = db.Column(db.String(256), nullable=False)
     avatar = db.Column(db.String(256), nullable=False)
+    count = db.Column(db.Integer , default = 0)
+    locktime = db.Column(db.Integer , default = 0)
 
 
 
@@ -36,6 +38,10 @@ class UserModel(db.Model):
 
     def delete_from_db(self):
         db.session.delete(self)
+        db.session.commit()
+
+    def update_to_db(self):
+        db.session.update(self)
         db.session.commit()
 
     @classmethod

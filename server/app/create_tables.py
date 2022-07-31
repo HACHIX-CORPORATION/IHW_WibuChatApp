@@ -14,6 +14,8 @@ users = Table('users' , metadata,
     Column('mail' , String(40)),
     Column('date' , String(40)),
     Column('avatar' , String(40)),
+    Column('count', Integer),
+    Column('locktime', Integer) 
 )
 
 metadata.create_all(engine)

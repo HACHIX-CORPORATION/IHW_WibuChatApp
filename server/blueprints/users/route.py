@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from blueprints.users import controller as user_ctrl
 
 
-user_master: Blueprint = Blueprint('user_master', __name__ , url_prefix='/api/user')
+user_master: Blueprint = Blueprint('user_master', __name__ )
 
 @user_master.route('/register' , methods=['POST'])
 def register():
@@ -30,14 +30,21 @@ def login():
     try:
         result = user_ctrl.login()
         return result
+
     
     except ValueError as ex:
         content = {
             'message' : '{}'.format(str(ex))
         }
+        # content1 = {
+        #     'message' : 'incorrect password'
+        # }
+        # if content == content1:
+        #     return {'message' : 'Nhap sai password'}
+
     except Exception :
         content = {
-            'message' : 'Create user failed'
+            'message' : 'Login user failed'
         }
     return jsonify(content)
 
