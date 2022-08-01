@@ -1,11 +1,11 @@
-from xml.sax import parseString
+# from xml.sax import parseString
 from flask import Flask, redirect, render_template,request
 from flask_jwt_extended import JWTManager
 from flask_restful import Api
 from blueprints.users.route import user_master
 from flask_cors import CORS
 
-from flask_socketio import SocketIO ,send
+from flask_socketio import SocketIO ,send , join_room , leave_room
 
 
 
@@ -32,14 +32,19 @@ jwt = JWTManager(app)
 
 app.register_blueprint(user_master)
 
+#nhận tin nhắn
 @socketio.on('message')
 def handle_message(data):
     print('recevied message : ' + data )
     send(data)
+    
 
-@socketio.on('connect')
-def client_connect():
-    pass
+# @sock
+#     send("User is connected")etio.on('connect')
+# def client_connect():
+
+# @socketio.on('join')
+
 
 
 
