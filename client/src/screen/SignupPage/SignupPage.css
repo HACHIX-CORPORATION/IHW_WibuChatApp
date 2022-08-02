@@ -1,217 +1,185 @@
 .success__pop-up {
-    display: none;
-    position: absolute;
-    width: 60%;
-    height: 40%;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.349);
+	display: none;
+	position: absolute;
+	width: 60%;
+	height: 40%;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.349);
 }
 
 .register__infos {
-    width: 100%;
+	width: 100%;
 }
 
 .register {
-    position: relative;
-    display: flex;
-    background-image: url("../../assets/register_bgr.webp");
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(226, 119, 119, 0.5);
+	position: relative;
+	display: flex;
+	background-image: url("../../assets/register_bgr.webp");
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(226, 119, 119, 0.5);
 }
 
-.register__infocontainer--tab1 {
-    color: #b9bbbe;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    /* height: ; */
+.register__infocontainer--block1 {
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 50%;
+	/* height: ; */
 }
 
 .register__form--birthday {
-    font-weight: 400;
-    margin-bottom: 20px;
+	font-weight: 400;
+	margin-bottom: 20px;
 }
 
 .register__form {
-    border-radius: 5px;
-    margin: auto;
-    background-color: #36393f;
-    width: 40%;
-    /* height: 80%; */
+	border-radius: 5px;
+	margin: auto;
+	background-color: #36393f;
+	width: 40%;
+	/* height: 80%; */
 }
 
 .register__header {
-    font-weight: 800;
-    margin-top: 3%;
-    text-align: center;
-    font-family: cursive;
-    color: aliceblue;
+	font-weight: 800;
+	margin-top: 3%;
+	text-align: center;
+	font-family: cursive;
+	color: aliceblue;
 }
 
 .register__info {
-    display: flex;
+	display: flex;
 }
-
+.register__info--blocks {
+	display: flex;
+	flex-direction: column;
+}
 .register__info--tab {
-    color: #b9bbbe;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 100%;
 }
 
-.register__infocontainer--tab2 {
-    color: #b9bbbe;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 40%;
-    justify-content: space-between;
-}
-
-caption {
-    text-align: center;
-    padding: 0;
-}
-
-.register__infocontainer--preview {
-    width: 60%;
-    margin: 10px auto;
-}
-
-.register__avatar--selectbox {
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    width: 90%;
-    height: 60%;
-    background-color: #212122;
-    margin-bottom: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.322);
-    border-radius: 5px;
+.register__infocontainer--block2 {
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 40%;
+	justify-content: space-between;
 }
 
 .register__infocontainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-img {
-    margin: 10px auto;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: 2px double gainsboro;
-    border-radius: 50%;
-    margin: auto;
-    width: 30%;
-    /* height: 20%; */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 label {
-    margin-bottom: 5px;
-    font-size: 14px;
-    margin-top: 15px;
+	margin-bottom: 5px;
+	font-size: 14px;
+	margin-top: 15px;
 }
 
 input {
-    height: 36px;
-    font-size: 16px;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #212122;
-    width: 90%;
+	height: 36px;
+	font-size: 16px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #212122;
+	width: 90%;
 }
 
 form {
-    color: #b9bbbe;
-    display: flex;
-    justify-content: center;
+	color: #b9bbbe;
+	display: flex;
+	justify-content: center;
 }
 
 .register__form--birthday {
-    font-weight: 400;
-    margin-bottom: 20px;
+	font-weight: 400;
+	margin-bottom: 20px;
 }
 
 .submit--button {
-    border-radius: 5px;
-    width: 90%;
-    margin-top: 20px;
-    color: #fff;
-    padding: 5px 0;
-    margin: auto;
-    background-color: #2e95f5d3;
-    border: solid transparent;
-}
-
-.register__avatar-preview {
-    margin: 10px auto;
+	/* text-align: center; */
+	border-radius: 5px;
+	width: 90%;
+	margin-top: 20px;
+	color: #fff;
+	padding: 5px 0;
+	margin: 10px auto;
+	background-color: #2e95f5d3;
+	border: solid transparent;
 }
 
 .submit--button:hover {
-    background-color: #2e94f5;
+	background-color: #2e94f5;
 }
 
 .submit--button:disabled {
-    background-color: rgb(177, 174, 174);
+	background-color: rgb(177, 174, 174);
 }
 
 #birthday {
-    height: 36px;
-    font-size: 14px;
+	height: 36px;
+	font-size: 14px;
 }
 
 a {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* margin-top: 20px; */
-    color: #00aff4;
-    text-decoration-style: none;
-    font-size: 12px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* margin-top: 20px; */
+	color: #00aff4;
+	text-decoration-style: none;
+	font-size: 12px;
 }
 
 span {
-    color: #00aff4;
-    text-decoration-style: none;
-    font-size: 12px;
+	color: #00aff4;
+	text-decoration-style: none;
+	font-size: 12px;
 }
 
 p {
-    text-align: center;
-    padding-top: 10px;
-    font-size: 12px;
-    color: #b9bbbe;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 12px;
+	color: #b9bbbe;
 }
 
 .register__footer {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 .submit__checkbox {
-    font-size: 20px;
-    padding: 10px 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 5%;
+	margin-top: 20px;
+	font-size: 14px;
+	padding: 10px 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 5%;
 }
 
 .submit__checkbox input {
-    /* display: flex; */
-    width: 20px;
-    height: 20px;
-    margin-top: 5px;
+	/* display: flex; */
+	width: 20px;
+	height: 20px;
+	margin-top: 5px;
 }
 
 .submit__checkbox p {
-    padding-top: 0;
-    text-align: left;
-    display: inline-block;
-    font-size: 20px;
-    width: 90%;
+	padding-top: 0;
+	text-align: left;
+	display: inline-block;
+	font-size: 20px;
+	width: 90%;
 }
