@@ -3,10 +3,16 @@
     <label>{{ title }}</label>
     <div class="inputarea">
       <fa class="fas-icon" :icon="icon" />
-      <input :type="type" placeholder="" />
+      <!-- track input's content in input field -->
+      <input
+        :type="type"
+        placeholder=""
+        v-model="inputContent"
+        @input="onInput"
+      />
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 export default {
@@ -21,11 +27,18 @@ export default {
     type: {
       type: String,
     },
+    info: {
+      type: String,
+    },
+    inputIndex: {
+      type: Number,
+    },
   },
   data() {
     return {
       disableBtn: true,
       imagePreview: "02.jpg",
+      inputContent: "",
       images: [
         {
           id: 1,
@@ -68,57 +81,14 @@ export default {
   },
 
   methods: {
-    chooseAva(data) {
-      console.log("shajkdhasjkhdashkdsja", data);
-      this.imagePreview = data;
-    },
-    displaySubmit() {
-      this.disableBtn = !this.disableBtn;
-    },
-    // check All input field
-    doneRegister() {
-      if (this.userName == "") {
-        alert("Please insert username");
-      } else if (this.passWord == "") {
-        alert("Please insert password");
-      } else if (this.repassWord == "") {
-        alert("Please insert re-password");
-      } else if (this.telephoneNum == "") {
-        alert("Please insert telephone");
-      } else if (this.mailAdd == "") {
-        alert("Please insert mail");
-      } else if (this.dobInfo == "") {
-        alert("Please insert date of birth");
-      }
-      //check input field when placeholder not empty
-      else {
-        if (this.userName.length < 4) {
-          alert("too short");
-        } else if (
-          // check password validation
-          this.passWord.length < 8 ||
-          this.passWord.length > 16 ||
-          this.passWord === this.passWord.toLowerCase() ||
-          this.passWord === this.passWord.replace(/[^\w ]/, "")
-        ) {
-          // check confirm password if match password or not
-          alert("Password wrong format");
-        } else if (this.repassWord !== this.passWord) {
-          alert("repassword not match");
-        } else if (
-          // check mail validation
-          !this.mailAdd.match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          )
-        ) {
-          alert("Mail invalid context");
-        } else {
-          // switch page after finish register
-          alert("Register successfully, go to login page");
-          window.location = "/login";
-          // console.log(typeof this.dobInfo);
-        }
-      }
+    onInput() {
+      // create object with 2 properties to take value for changed input
+      let inputInfo = {
+        index: this.inputIndex,
+        content: this.inputContent,
+      };
+      // emit 'on-input' to parent
+      this.$emit(`on-input`, inputInfo);
     },
   },
 };

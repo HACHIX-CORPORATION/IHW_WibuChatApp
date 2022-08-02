@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       disableBtn: true,
-      imagePreview: "hanezawa.jpg",
+      imagePreview: "02.jpg",
       images: [
         {
           id: 1,
@@ -68,10 +68,10 @@ export default {
     };
   },
   methods: {
-    // add argument "imagePreview" cho onChoose
+    // add argument "imagePreview" for onChoose()
     onChoose(imagePreview) {
       console.log(imagePreview);
-      // this.imagePreview la hanezawa =  ../assets/{imagePreview}
+      // this.imagePreview is hanezawa =  ../assets/{imagePreview}
       this.imagePreview = imagePreview;
     },
   },

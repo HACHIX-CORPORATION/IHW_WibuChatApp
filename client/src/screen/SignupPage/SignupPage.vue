@@ -8,11 +8,14 @@
             <div class="register__infocontainer">
               <div class="register__infocontainer--block1">
                 <FormInput
+                  v-for="(input, index) in inputInfos"
+                  :info="input.info"
                   :title="input.title"
                   :icon="input.icon"
                   :type="input.type"
-                  v-for="(input, index) in inputInfos"
                   :key="index"
+                  :inputIndex="index"
+                  @on-input="onChangeInput"
                 />
               </div>
               <div class="register__infocontainer--block2">

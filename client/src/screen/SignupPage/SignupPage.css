@@ -54,7 +54,10 @@
 .register__info {
 	display: flex;
 }
-
+.register__info--blocks {
+	display: flex;
+	flex-direction: column;
+}
 .register__info--tab {
 	color: #b9bbbe;
 	display: flex;
@@ -105,12 +108,13 @@ form {
 }
 
 .submit--button {
+	/* text-align: center; */
 	border-radius: 5px;
 	width: 90%;
 	margin-top: 20px;
 	color: #fff;
 	padding: 5px 0;
-	margin: auto;
+	margin: 10px auto;
 	background-color: #2e95f5d3;
 	border: solid transparent;
 }
@@ -156,7 +160,8 @@ p {
 }
 
 .submit__checkbox {
-	font-size: 20px;
+	margin-top: 20px;
+	font-size: 14px;
 	padding: 10px 10px;
 	display: flex;
 	flex-direction: row;
