@@ -5,18 +5,25 @@
       <form>
         <div class="login__form-infos">
           <div class="login__form-info">
-            <div class="login__form-info__tab">
+            <FomrInput
+              v-for="(input, index) in inputInfos"
+              :info="input.info"
+              :title="input.title"
+              :icon="input.icon"
+              :type="input.type"
+              :key="index"
+            />
+            <!-- <div class="login__form-info__tab">
               <h4>Username</h4>
               <input type="text" placeholder="" />
               <div id="password-section">
                 <h4>Password</h4>
                 <input v-if="showPassword" type="text" placeholder="" v-model="password" />
                 <input v-else type="password" class="input" v-model="password" />
-
-                <fa id="fas" icon="eye" @click="toggleShow" :class="{ isShow: showPassword, isHide: !showPassword }" />
               </div>
-              <button class="submit-button">Login</button>
-            </div>
+            </div> -->
+            <fa id="fas" icon="eye" @click="toggleShow" />
+            <button class="submit--button">Login</button>
           </div>
           <div class="login__footer">
             <a href="http://localhost:8080/signup">You don't have account ??</a>
@@ -26,32 +33,14 @@
       </form>
     </div>
   </div>
-
 </template>
 
-<script>
-export default {
-  data()
-  {
-    return {
-      showPassword: false,
-      password: null,
-    };
-  },
-  computed: {},
-  methods: {
-    toggleShow()
-    {
-      this.showPassword = !this.showPassword;
-    },
-  },
-};
+<script src="./LoginPage.js">
 </script>
 
 <style scoped>
 #fas:hover {
   cursor: pointer;
-
 }
 
 .login {
@@ -62,17 +51,20 @@ export default {
   height: 100vh;
   background-color: rgba(158, 153, 153, 0.5);
 }
+#fas {
+  padding-left: 12%;
+}
 
 .login__form {
   border-radius: 5px;
   margin: auto;
   background-color: #36393f;
   width: 40%;
-  height: 40%;
 }
 
 .login__form-infos {
   width: 80%;
+  padding-bottom: 20px;
 }
 
 .login__form-header {
@@ -81,13 +73,6 @@ export default {
   text-align: center;
   font-family: cursive;
   color: aliceblue;
-}
-
-.register__form-info__tab {
-  margin: 20px 0;
-  color: #b9bbbe;
-  display: flex;
-  flex-direction: column;
 }
 
 h4 {
@@ -116,7 +101,7 @@ form {
   margin-bottom: 20px;
 }
 
-.submit-button {
+.submit--button {
   margin-top: 30px;
   color: #fff;
   background-color: #5865f2;

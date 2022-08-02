@@ -22,6 +22,7 @@ export default {
 					icon: "key",
 					type: "password",
 					info: "",
+					isPassword: true,
 				},
 				{
 					title: "rePassword",
@@ -93,7 +94,7 @@ export default {
 	methods: {
 		onChangeInput(data) {
 			console.log(data);
-			// gan info = gia tri nhap vao moi <input> tag 
+			// gan info = gia tri nhap vao moi <input> tag
 			this.inputInfos[data.index].info = data.content;
 		},
 		displaySubmit() {
