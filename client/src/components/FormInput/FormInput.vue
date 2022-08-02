@@ -36,8 +36,7 @@ export default {
   },
   data() {
     return {
-      disableBtn: true,
-      imagePreview: "02.jpg",
+     
       inputContent: "",
       images: [
         {
