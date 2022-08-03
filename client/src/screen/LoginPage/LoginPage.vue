@@ -13,20 +13,12 @@
               :type="input.type"
               :key="index"
             />
-            <!-- <div class="login__form-info__tab">
-              <h4>Username</h4>
-              <input type="text" placeholder="" />
-              <div id="password-section">
-                <h4>Password</h4>
-                <input v-if="showPassword" type="text" placeholder="" v-model="password" />
-                <input v-else type="password" class="input" v-model="password" />
-              </div>
-            </div> -->
-            <fa id="fas" icon="eye" @click="toggleShow" />
+            <fa id="fas" icon="eye" @click="onShow" />
             <button class="submit--button">Login</button>
           </div>
           <div class="login__footer">
-            <a href="http://localhost:8080/signup">You don't have account ??</a>
+            <!-- 1 way to use router-link to change page without having href -->
+            <router-link :to="'/signup'">You don't have account ??</router-link>
             <a href="">Forgot password</a>
           </div>
         </div>

@@ -1,7 +1,9 @@
 <template>
   <div class="image-select">
     <caption>
-      Choose your waifu
+      {{
+        caption
+      }}
     </caption>
     <img
       class="register__infocontainer--preview"
@@ -14,7 +16,7 @@
         :key="index"
         :src="require(`../../assets/${image.url}`)"
         alt=""
-        @click="onChoose(image.url)"
+        @click="onSelect(image.url)"
       />
     </div>
   </div>
@@ -22,7 +24,12 @@
 
 <script>
 export default {
-  name: "ImageSelect",
+  name: "ImageSelector",
+  props: {
+    caption: {
+      type: String,
+    },
+  },
   data() {
     return {
       disableBtn: true,
@@ -69,8 +76,7 @@ export default {
   },
   methods: {
     // add argument "imagePreview" for onChoose()
-    onChoose(imagePreview) {
-      console.log(imagePreview);
+    onSelect(imagePreview) {
       // this.imagePreview is hanezawa =  ../assets/{imagePreview}
       this.imagePreview = imagePreview;
     },
@@ -78,52 +84,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.image-select {
-  width: 100%;
-  text-align: center;
-}
-caption {
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 0;
-}
+<style scoped src="./ImageSelector.css">
 
-.register__infocontainer--preview {
-  width: 60%;
-  margin: 10px auto;
-}
-
-.register__avatar--selectbox {
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  width: 90%;
-  height: 60%;
-  background-color: #212122;
-  margin-bottom: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.322);
-  border-radius: 5px;
-}
-
-.register__infocontainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.register__avatar-preview {
-  margin: 10px auto;
-}
-img {
-  margin: 10px auto;
-  box-sizing: border-box;
-  cursor: pointer;
-  border: 2px double gainsboro;
-  border-radius: 50%;
-  margin: auto;
-  width: 30%;
-  /* height: 20%; */
-}
 </style>

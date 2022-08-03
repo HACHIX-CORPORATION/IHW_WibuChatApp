@@ -3,24 +3,12 @@
     <label>{{ title }}</label>
     <div class="inputarea">
       <fa class="fas-icon" :icon="icon" />
-      <!-- v-model track input's content in input field -->
-      <!-- <input
-        v-if="showPassword"
+      <input
         :type="type"
         placeholder=""
         v-model="inputContent"
         @input="onInput"
-        @click="onClick"
       />
-      <input
-        v-else
-        type="password"
-        placeholder=""
-        v-model="inputContent"
-        @input="onInput"
-        @click="onClick"
-      /> -->
-      <input :type="type" placeholder="" v-model="inputContent" @input="onInput" />
     </div>
   </div>
 </template> 
@@ -45,22 +33,14 @@ export default {
       type: Number,
     },
   },
-  data()
-  {
+  data() {
     return {
       inputContent: "",
-      showPassword: false,
     };
   },
 
   methods: {
-    onClick()
-    {
-      console.log("hello");
-      this.showPassword = !this.showPassword;
-    },
-    onInput()
-    {
+    onInput() {
       // create object with 2 properties to take value for changed input
       let inputInfo = {
         index: this.inputIndex,

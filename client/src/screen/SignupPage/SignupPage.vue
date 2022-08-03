@@ -19,7 +19,7 @@
                 />
               </div>
               <div class="register__infocontainer--block2">
-                <ImageSelect />
+                <ImageSelector :caption="caption" />
               </div>
             </div>
             <div class="submit__checkbox">
@@ -32,7 +32,7 @@
             <button
               class="submit--button"
               :disabled="disableBtn"
-              @click="doneRegister"
+              @click="onSubmit"
             >
               Submit
             </button>
@@ -40,7 +40,8 @@
         </div>
       </div>
       <div class="register__footer">
-        <a href="http://localhost:8080/login">Already have an account ?</a>
+        <!-- 1 way to use router-link to change page without having href -->
+        <router-link :to="'/login'">Already have an account ?</router-link>
         <p>
           By registering, you agree to Wichat's
           <span>Term of services</span> and <span>Privacy Policy</span>
