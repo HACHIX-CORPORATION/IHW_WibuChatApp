@@ -8,9 +8,11 @@ export default {
 	},
 	data() {
 		return {
+			routes: [{ name: "Lobby", url: "/lobby" }],
 			inputInfos: [Constant.REGISTER_INFOS[0], Constant.REGISTER_INFOS[1]],
 		};
 	},
+
 	methods: {
 		onShow() {
 			// if type = text -> convert type = password and vice_versa
@@ -19,6 +21,9 @@ export default {
 			} else {
 				this.inputInfos[1].type = "text";
 			}
+		},
+		onLogin() {
+			this.$router.push({ name: "Lobby" });
 		},
 		computed: {},
 	},

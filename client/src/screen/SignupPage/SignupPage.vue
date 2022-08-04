@@ -41,7 +41,9 @@
       </div>
       <div class="register__footer">
         <!-- 1 way to use router-link to change page without having href -->
-        <router-link id="router" :to="'/login'">Already have an account ?</router-link>
+        <router-link id="router" :to="'/login'"
+          >Already have an account ?</router-link
+        >
         <p>
           By registering, you agree to Wichat's
           <span>Term of services</span> and <span>Privacy Policy</span>
