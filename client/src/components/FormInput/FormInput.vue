@@ -1,4 +1,5 @@
 <template>
+  
   <div class="form-input">
     <label>{{ title }}</label>
     <div class="inputarea">

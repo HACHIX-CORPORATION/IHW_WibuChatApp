@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      disableBtn: true,
+      invalid: true,
       imagePreview: "02.jpg",
       images: [
         {
@@ -85,5 +85,4 @@ export default {
 </script>
 
 <style scoped src="./ImageSelector.css">
-
 </style>

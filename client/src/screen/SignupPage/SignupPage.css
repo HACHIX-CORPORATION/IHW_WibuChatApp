@@ -1,12 +1,3 @@
-.success__pop-up {
-	display: none;
-	position: absolute;
-	width: 60%;
-	height: 40%;
-	margin: auto;
-	background-color: rgba(255, 255, 255, 0.349);
-}
-
 .register__infos {
 	width: 100%;
 }
@@ -18,7 +9,6 @@
 	background-size: cover;
 	width: 100%;
 	height: 100vh;
-	background-color: rgba(226, 119, 119, 0.5);
 }
 
 .register__infocontainer--block1 {
@@ -132,14 +122,25 @@ form {
 	font-size: 14px;
 }
 
-a {
+.register__footer {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: space-around;
+	margin-top: 10px;
+}
+#router {
 	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	/* margin-top: 20px; */
 	color: #00aff4;
 	text-decoration-style: none;
-	font-size: 12px;
+	font-size: 14px;
+}
+.register__footer p {
+	text-align: left;
+	font-size: 14px;
+	color: #b9bbbe;
+	padding-top: 10px;
 }
 
 span {
@@ -148,21 +149,9 @@ span {
 	font-size: 12px;
 }
 
-p {
-	text-align: center;
-	padding-top: 10px;
-	font-size: 12px;
-	color: #b9bbbe;
-}
-
-.register__footer {
-	margin-top: 20px;
-}
-
 .submit__checkbox {
 	margin-top: 20px;
 	font-size: 14px;
-	padding: 10px 10px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -170,16 +159,15 @@ p {
 }
 
 .submit__checkbox input {
-	/* display: flex; */
 	width: 20px;
 	height: 20px;
 	margin-top: 5px;
 }
 
 .submit__checkbox p {
-	padding-top: 0;
 	text-align: left;
 	display: inline-block;
-	font-size: 20px;
+	font-size: 16px;
 	width: 90%;
+	color: #b9bbbe;
 }
