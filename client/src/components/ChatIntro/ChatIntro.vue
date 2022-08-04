@@ -19,6 +19,7 @@ export default {};
 <style>
 .intro {
   height: 50vh;
+  width: 100%;
 }
 
 .intro__container {
