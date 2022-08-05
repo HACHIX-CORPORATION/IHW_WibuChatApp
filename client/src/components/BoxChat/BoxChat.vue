@@ -1,15 +1,25 @@
 <template>
   <div class="boxchat">
     <div class="boxchat__container">
-      <h1>Welcome to {{ appName }}</h1>
-      <div class="boxchat__main"></div>
+      <div class="boxchat__header">
+        <h1>Wichat</h1>
+      </div>
+      <div class="boxchat__screen"><BoxMain /></div>
+      <div class="boxchat__input">
+        <div class="boxchat__input--layout">
+          <input type="text" placeholder="  Aa" />
+          <button class="submit">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import BoxMain from "../../components/BoxMain/BoxMain.vue";
 export default {
   name: "BoxChat",
+  components: { BoxMain },
   data() {
     return {
       appName: "Wichat",
@@ -18,21 +28,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.boxchat {
-  left: 15%;
-  position: absolute;
-  width: 85%;
-}
-.boxchat__container {
-  width: 100%;
-  height: 100%;
-  font-size: 100px;
-}
-h1 {
-  font-size: 30px;
-  margin: 0;
-  background-color: rgb(194, 194, 194);
-  text-align: center;
-}
+<style scoped src="./BoxChat.css">
 </style>
