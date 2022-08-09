@@ -1,29 +1,49 @@
 <template>
   <div class="boxchat">
     <div class="boxchat__container">
-      <div class="boxchat__header">
-        <h1>Wichat</h1>
-      </div>
-      <div class="boxchat__screen"><BoxMain /></div>
-      <div class="boxchat__input">
-        <div class="boxchat__input--layout">
-          <input type="text" placeholder="  Aa" />
-          <button class="submit">Send</button>
+      <div class="boxchat__header">Wichat</div>
+      <div class="boxchat__screen">
+        <div class="receiveMessenger"></div>
+        <div class="sendMessenger">
+          <div
+            class="messenger__container"
+            v-for="(messenger, idx) in messengerList"
+            :key="idx"
+          >
+            <img src="../../assets/akame.jpg" alt="" />
+            <div class="messenger__text">{{ messenger }}</div>
+          </div>
         </div>
+      </div>
+      <div class="boxchat__input">
+        <form @submit.prevent="send" class="boxchat__input--layout">
+          <input type="text" placeholder=" Aa" v-model="newText" />
+          <button type="submit" class="submit">Send</button>
+          
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BoxMain from "../../components/BoxMain/BoxMain.vue";
 export default {
   name: "BoxChat",
-  components: { BoxMain },
   data() {
     return {
       appName: "Wichat",
+      newText: "",
+      messengerList: [],
     };
+  },
+  methods: {
+    send() {
+      // check noi dung co phai la empty hay khong thi moi push
+      if (this.newText != "") {
+        this.messengerList.push(this.newText);
+        this.newText = "";
+      } else this.newText = "";
+    },
   },
 };
 </script>

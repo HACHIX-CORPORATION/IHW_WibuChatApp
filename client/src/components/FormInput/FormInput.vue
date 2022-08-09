@@ -1,5 +1,5 @@
 <template>
-  <div class="form-input">
+  <form class="form-input">
     <label>{{ title }}</label>
     <div class="inputarea">
       <fa class="fas-icon" :icon="icon" />
@@ -10,7 +10,7 @@
         @input="onInput"
       />
     </div>
-  </div>
+  </form>
 </template> 
 
 <script>

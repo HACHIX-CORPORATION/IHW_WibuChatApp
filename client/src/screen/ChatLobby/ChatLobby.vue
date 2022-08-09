@@ -20,8 +20,9 @@ export default {
 
 <style>
 .Chatlobby {
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
+  width: 100%;
+  height: 910px;
+  display: grid;
+  grid-template-columns: 15% 85%;
 }
 </style>

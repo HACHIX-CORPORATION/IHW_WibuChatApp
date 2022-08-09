@@ -14,7 +14,9 @@
               :key="index"
             />
             <fa id="fas" icon="eye" @click="onShow" />
-            <button class="submit--button" @click="onLogin()">Login</button>
+            <button class="submit--button" @click.prevent="onLogin">
+              Login
+            </button>
           </div>
           <div class="login__footer">
             <!-- 1 way to use router-link to change page without having href -->

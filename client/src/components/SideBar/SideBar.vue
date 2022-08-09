@@ -2,12 +2,7 @@
   <div class="sidebar">
     <div class="sidebar__container">
       <div class="sidebar--user">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#clients">Clients</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
+        <a href="#about">Room1</a>
       </div>
       <div class="sidebar--logout">
         <fa class="icon" icon="arrow-right-arrow-left" @click="onSignout" />
@@ -29,6 +24,7 @@ export default {
       this.$router.push({ name: "Home" });
     },
   },
+  computed: {},
 };
 </script>
 

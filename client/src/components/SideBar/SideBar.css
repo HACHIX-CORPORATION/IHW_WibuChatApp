@@ -1,13 +1,9 @@
 .sidebar__container {
 	height: 100%;
-	width: 15%;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
+	width: 100%;
 	background-color: #fabb6a;
 	overflow-x: hidden;
-	padding-top: 20px;
+	padding-top: 17px;
 	border-right: 1px solid rgba(0, 0, 0, 0.3);
 	display: flex;
 	flex-direction: column;
@@ -20,6 +16,7 @@
 	font-size: 25px;
 	color: #000000;
 	display: block;
+	width: 100%;
 }
 
 .sidebar__container a:hover {
@@ -29,15 +26,14 @@
 .sidebar--logout {
 	cursor: pointer;
 	text-align: center;
-	margin-top: 600px;
+	margin-top: 800px;
 }
 .icon {
 	cursor: pointer;
-	height: 5vh;
+	height: 40px;
 }
 .icon:hover {
 	cursor: pointer;
-	height: 5vh;
 	transform: rotate(180deg);
 	transition: 1s;
 }

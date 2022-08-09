@@ -1,5 +1,15 @@
 import FomrInput from "../../components/FormInput/FormInput.vue";
 import Constant from "@/constant/Constant"; // import file contain variables
+import axios from "axios";
+
+const baseUrl = "http://127.0.0.1:5000";
+// const baseUrl = "localhost:5000";
+
+axios.defaults.headers = {
+	"Cache-Control": "no-cache",
+	Pragma: "no-cache",
+	Expires: "0",
+};
 
 export default {
 	name: "LoginPage",
@@ -22,8 +32,17 @@ export default {
 				this.inputInfos[1].type = "text";
 			}
 		},
-		onLogin() {
-			this.$router.push({ name: "Lobby" });
+		async onLogin() {
+			try {
+				// this.$router.push({ name: "Lobby" });
+				let response = await axios.post(baseUrl + "/login", {
+					username: "fsdf",
+					password: "sdafasfsdf",
+				});
+				console.log({ response });
+			} catch (error) {
+				console.log(error);
+			}
 		},
 		computed: {},
 	},
