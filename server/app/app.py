@@ -1,15 +1,18 @@
-# from xml.sax import parseString
-from flask import Flask, redirect, render_template,request
-from flask_jwt_extended import JWTManager
+from socket import socket
+from flask import Flask, redirect, render_template, request, session
+from flask_jwt_extended import JWTManager, get_jwt_identity, jwt_required
 from flask_restful import Api
 from blueprints.users.route import user_master
+from blueprints.rooms.router import room_master
 from flask_cors import CORS
+from flask_socketio import SocketIO, send, join_room, leave_room, emit
+from blueprints.messages.models import MessageModel
+from blueprints.users.models import UserModel
+from blueprints.rooms.models import RoomModel
+import time
 
-from flask_socketio import SocketIO ,send , join_room , leave_room
 
-
-
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
 
@@ -17,36 +20,74 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 
 socketio = SocketIO(app, cors_allowed_origins='*')
 
-
-
 api = Api(app)
 
 app.config['SECRET_KEY'] = "12345678"
-app.config["JWT_SECRET_KEY"] = "jose"  # Change this!
+app.config["JWT_SECRET_KEY"] = "jose"
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
+app.config['JWT_ACCESS_COOKIE_PATH'] = '/'
 app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
-jwt = JWTManager(app) 
-
+jwt = JWTManager(app)
 
 app.register_blueprint(user_master)
+app.register_blueprint(room_master)
 
-#nhận tin nhắn
+
 @socketio.on('message')
+@jwt_required()
 def handle_message(data):
-    print('recevied message : ' + data )
-    send(data)
-    
+    data1 = get_jwt_identity()
+    print('recevied message : ' + data)
+    user = UserModel.find_by_name(data1)
+    time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
 
-# @sock
-#     send("User is connected")etio.on('connect')
-# def client_connect():
-
-# @socketio.on('join')
-
-
+    if user:
+        message = MessageModel(roomID=1, userID=user.id, message=data)
+        message.save_to_db()
+        send(data1 + ' : ' + data + '(time :  ' + time_stamp + ' )', broadcast=True)
 
 
+@socketio.on('chat_room')
+@jwt_required()
+def chat_room(data):
+    username = get_jwt_identity()
+    mess = data['mess']
+    room = data['room']
+    roomDB = RoomModel.find_by_name(room)
+    user = UserModel.find_by_name(username)
+    message = MessageModel(roomID=roomDB.roomID, userID=user.id, message=mess)
+    message.save_to_db()
+    emit("msg_room", username + " : " + mess, room=room)
 
 
+@socketio.on('join')
+@jwt_required()
+def on_join(data):
+    username = get_jwt_identity()
+    room = data['room']
+    join_room(room)
+    roomDB = RoomModel.find_by_name(room)
+    if roomDB:
+        emit("msg_room", username + " has joined the " +
+             room + " room.", room=room)
+    else:
+        send('Not found room')
+
+
+@socketio.on('disconnect')
+@jwt_required()
+def test_disconnect():
+    print('[DISCONNECTED] ' + request.sid)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/hi')
+def home1():
+    return render_template('protected.html')
+
+@app.route('/homechat')
+def home3():
+    return render_template('homechat.html')
