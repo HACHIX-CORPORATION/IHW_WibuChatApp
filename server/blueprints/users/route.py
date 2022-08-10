@@ -85,4 +85,5 @@ def protected():
 def logout():
     resp = jsonify({'message': 'logout success'})
     unset_jwt_cookies(resp)
-    return resp
+    status = HTTPStatus.OK
+    return resp,status

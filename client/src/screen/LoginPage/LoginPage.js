@@ -20,9 +20,10 @@ export default {
 		return {
 			routes: [{ name: "Lobby", url: "/lobby" }],
 			inputInfos: [Constant.REGISTER_INFOS[0], Constant.REGISTER_INFOS[1]],
+			userName: "",
+			passWord: "",
 		};
 	},
-
 	methods: {
 		onShow() {
 			// if type = text -> convert type = password and vice_versa
@@ -36,14 +37,37 @@ export default {
 			try {
 				// this.$router.push({ name: "Lobby" });
 				let response = await axios.post(baseUrl + "/login", {
-					username: "tuan",
-					password: "admin",
+					username: this.userName,
+					password: this.passWord,
 				});
 				console.log({ response });
 			} catch (error) {
 				console.log(error);
 			}
+			if (this.userName == "" || this.passWord == "") {
+				alert("Vui lòng điền đủ thông tin");
+			}
 		},
-		computed: {},
+
+		/**
+		 *
+		 * @param {Object} inputValue is a object contain index, input content
+		 */
+		inputSubmit(inputValue) {
+			console.log(inputValue);
+			if (inputValue.index === 0) {
+				this.userName = inputValue.content;
+			}
+			if (inputValue.index === 1) {
+				this.passWord = inputValue.content;
+			}
+
+			console.log({ username: this.userName, password: this.passWord });
+		},
+	},
+	computed: {
+		isDisable() {
+			return this.userName.length === 0 || this.passWord.length === 0;
+		},
 	},
 };
