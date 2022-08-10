@@ -1,4 +1,5 @@
 <template>
+
   <body>
     <ChatHeader />
     <ChatIntro />
@@ -20,5 +21,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

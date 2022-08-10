@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template id="body">
+  <div class="home">
     <router-view></router-view>
   </div>
 </template>
@@ -16,10 +16,6 @@ export default {
 </script>
 
 <style scoped>
-#app {
-  /* color: #e91414; */
-  margin-top: 0px;
-}
 body {
   background-image: url(https://i.pinimg.com/originals/09/24/4c/09244c7f7dd4d17b0484370f32db6641.gif);
   background-repeat: no-repeat;

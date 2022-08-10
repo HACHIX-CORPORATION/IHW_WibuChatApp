@@ -5,16 +5,20 @@
       <form>
         <div class="login__form-infos">
           <div class="login__form-info">
-            <div class="login__form-info__tab">
-              <h4>Username</h4>
-              <input type="text" placeholder="" />
-              <h4>Password</h4>
-              <input type="text" placeholder="" />
-              <button class="submit-button">Login</button>
-            </div>
+            <FomrInput
+              v-for="(input, index) in inputInfos"
+              :info="input.info"
+              :title="input.title"
+              :icon="input.icon"
+              :type="input.type"
+              :key="index"
+            />
+            <fa id="fas" icon="eye" @click="onShow" />
+            <button class="submit--button">Login</button>
           </div>
           <div class="login__footer">
-            <a href="http://localhost:8080/signup">You don't have account ??</a>
+            <!-- 1 way to use router-link to change page without having href -->
+            <router-link :to="'/signup'">You don't have account ??</router-link>
             <a href="">Forgot password</a>
           </div>
         </div>
@@ -23,28 +27,38 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script src="./LoginPage.js">
 </script>
 
-<style>
+<style scoped>
+#fas:hover {
+  cursor: pointer;
+}
+
 .login {
   display: flex;
   background-image: url("../../assets/register_bgr.webp");
+  background-size: cover;
   width: 100%;
   height: 100vh;
   background-color: rgba(158, 153, 153, 0.5);
 }
+#fas {
+  padding-left: 12%;
+}
+
 .login__form {
   border-radius: 5px;
   margin: auto;
   background-color: #36393f;
   width: 40%;
-  height: 40%;
 }
+
 .login__form-infos {
   width: 80%;
+  padding-bottom: 20px;
 }
+
 .login__form-header {
   font-weight: 800;
   margin-top: 3%;
@@ -52,17 +66,13 @@ export default {};
   font-family: cursive;
   color: aliceblue;
 }
-.register__form-info__tab {
-  margin: 20px 0;
-  color: #b9bbbe;
-  display: flex;
-  flex-direction: column;
-}
+
 h4 {
   margin-bottom: 5px;
   font-size: 14px;
   margin-top: 15px;
 }
+
 input {
   height: 36px;
   font-size: 16px;
@@ -71,16 +81,19 @@ input {
   background-color: #202225;
   width: 100%;
 }
+
 form {
   color: #b9bbbe;
   display: flex;
   justify-content: center;
 }
+
 .login__form-birthday {
   font-weight: 400;
   margin-bottom: 20px;
 }
-.submit-button {
+
+.submit--button {
   margin-top: 30px;
   color: #fff;
   background-color: #5865f2;
@@ -89,9 +102,11 @@ form {
   padding: 5px 0;
   width: 100%;
 }
+
 .submit-button:hover {
   background-color: #5865f2c4;
 }
+
 a {
   color: #00aff4;
   text-decoration-style: none;
@@ -99,6 +114,7 @@ a {
 }
 
 .login__footer {
+  width: 100%;
   margin-top: 10px;
   display: flex;
   justify-content: space-between;

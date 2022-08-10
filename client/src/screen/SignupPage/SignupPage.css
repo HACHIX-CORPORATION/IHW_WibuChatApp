@@ -1,13 +1,4 @@
-.success__pop-up {
-	display: none;
-	position: absolute;
-	width: 60%;
-	height: 40%;
-	margin: auto;
-	background-color: rgba(255, 255, 255, 0.349);
-}
-
-.register__form-infos {
+.register__infos {
 	width: 100%;
 }
 
@@ -15,9 +6,23 @@
 	position: relative;
 	display: flex;
 	background-image: url("../../assets/register_bgr.webp");
+	background-size: cover;
 	width: 100%;
 	height: 100vh;
-	background-color: rgba(158, 153, 153, 0.5);
+}
+
+.register__infocontainer--block1 {
+	color: #b9bbbe;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 50%;
+	/* height: ; */
+}
+
+.register__form--birthday {
+	font-weight: 400;
+	margin-bottom: 20px;
 }
 
 .register__form {
@@ -28,7 +33,7 @@
 	/* height: 80%; */
 }
 
-.register__form-header {
+.register__header {
 	font-weight: 800;
 	margin-top: 3%;
 	text-align: center;
@@ -36,24 +41,22 @@
 	color: aliceblue;
 }
 
-.register__form-info {
+.register__info {
 	display: flex;
 }
-
-.register__form-info__tab {
-	color: #b9bbbe;
+.register__info--blocks {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	width: 100%;
+	flex-direction: column;
 }
-.register__form-info__tab1 {
+.register__info--tab {
 	color: #b9bbbe;
 	display: flex;
 	flex-direction: column;
-	width: 50%;
+	justify-content: space-evenly;
+	width: 100%;
 }
-.register__form-info__tab2 {
+
+.register__infocontainer--block2 {
 	color: #b9bbbe;
 	display: flex;
 	flex-direction: column;
@@ -61,32 +64,14 @@
 	width: 40%;
 	justify-content: space-between;
 }
-.register__avatar-selectbox {
-	margin: auto;
+
+.register__infocontainer {
 	display: flex;
-	flex-wrap: wrap;
-	width: 90%;
-	height: 70%;
-	background-color: #212122;
-	margin-bottom: 20px;
-	border: 2px solid rgba(255, 255, 255, 0.322);
-	border-radius: 5px;
-}
-.register__avatar-selectbox img {
-	width: 30%;
-	height: 20%;
-	z-index: 10;
-	cursor: pointer;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
-img {
-	border: 2px double gainsboro;
-	border-radius: 50%;
-	margin: auto;
-	width: 40%;
-	height: 20%;
-}
-h4 {
+label {
 	margin-bottom: 5px;
 	font-size: 14px;
 	margin-top: 15px;
@@ -107,24 +92,29 @@ form {
 	justify-content: center;
 }
 
-.register__form-birthday {
+.register__form--birthday {
 	font-weight: 400;
 	margin-bottom: 20px;
 }
 
-.submit-button {
-	/* display: none; */
+.submit--button {
+	/* text-align: center; */
+	border-radius: 5px;
+	width: 90%;
 	margin-top: 20px;
 	color: #fff;
 	padding: 5px 0;
+	margin: 10px auto;
+	background-color: #2e95f5d3;
+	border: solid transparent;
 }
 
-.submit-button:hover {
-	background-color: #5865f2c4;
+.submit--button:hover {
+	background-color: #2e94f5;
 }
 
-.submit-button:disabled {
-	background-color: rgb(117, 117, 117);
+.submit--button:disabled {
+	background-color: rgb(177, 174, 174);
 }
 
 #birthday {
@@ -132,14 +122,25 @@ form {
 	font-size: 14px;
 }
 
-a {
+.register__footer {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	/* flex-direction: column; */
+	justify-content: space-around;
+	margin-top: 10px;
+}
+#router {
 	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	/* margin-top: 20px; */
 	color: #00aff4;
 	text-decoration-style: none;
-	font-size: 12px;
+	font-size: 14px;
+}
+.register__footer p {
+	text-align: left;
+	font-size: 14px;
+	color: #b9bbbe;
+	padding-top: 10px;
 }
 
 span {
@@ -148,33 +149,25 @@ span {
 	font-size: 12px;
 }
 
-p {
-	text-align: center;
-	padding-top: 10px;
-	font-size: 12px;
-	color: #b9bbbe;
-}
-
-.register__footer {
-	margin-top: 20px;
-}
-
 .submit__checkbox {
+	margin-top: 20px;
+	font-size: 14px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	padding-left: 5%;
 }
 
 .submit__checkbox input {
-	display: flex;
 	width: 20px;
 	height: 20px;
+	margin-top: 5px;
 }
 
 .submit__checkbox p {
-	padding-top: 0;
 	text-align: left;
 	display: inline-block;
-	font-size: 14px;
+	font-size: 16px;
 	width: 90%;
+	color: #b9bbbe;
 }
