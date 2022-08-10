@@ -35,17 +35,20 @@ export default {
 		},
 		async onLogin() {
 			try {
-				// this.$router.push({ name: "Lobby" });
 				let response = await axios.post(baseUrl + "/login", {
 					username: this.userName,
 					password: this.passWord,
 				});
 				console.log({ response });
+				// check status from response axios 
+				if (response.statusText == "OK") {
+					alert("Login succesfully");
+					// this.$router.push({ name: "Lobby" });
+				}
+				// console.log(response);
 			} catch (error) {
+				alert("Login failed !");
 				console.log(error);
-			}
-			if (this.userName == "" || this.passWord == "") {
-				alert("Vui lòng điền đủ thông tin");
 			}
 		},
 
@@ -53,6 +56,7 @@ export default {
 		 *
 		 * @param {Object} inputValue is a object contain index, input content
 		 */
+		// lay ra value sau khi nhap vao moi o input
 		inputSubmit(inputValue) {
 			console.log(inputValue);
 			if (inputValue.index === 0) {
@@ -61,11 +65,11 @@ export default {
 			if (inputValue.index === 1) {
 				this.passWord = inputValue.content;
 			}
-
 			console.log({ username: this.userName, password: this.passWord });
 		},
 	},
 	computed: {
+		// enable login button when input field is not empty
 		isDisable() {
 			return this.userName.length === 0 || this.passWord.length === 0;
 		},
