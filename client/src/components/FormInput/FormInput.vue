@@ -1,5 +1,5 @@
 <template>
-  <form class="form-input">
+  <form @submit.prevent="onRegister" class="form-input">
     <label>{{ title }}</label>
     <div class="inputarea">
       <fa class="fas-icon" :icon="icon" />

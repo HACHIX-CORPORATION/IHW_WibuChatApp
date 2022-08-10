@@ -24,6 +24,12 @@ export default {
 			passWord: "",
 		};
 	},
+	computed: {
+		// enable login button when input field is not empty
+		isDisable() {
+			return !this.userName || !this.passWord;
+		},
+	},
 	methods: {
 		onShow() {
 			// if type = text -> convert type = password and vice_versa
@@ -40,13 +46,14 @@ export default {
 					password: this.passWord,
 				});
 				console.log({ response });
-				// check status from response axios 
-				if (response.statusText == "OK") {
+				// check status from response axios
+				if (response.status === 200) {
 					alert("Login succesfully");
-					// this.$router.push({ name: "Lobby" });
+					this.$router.push({ name: "Lobby" });
 				}
 				// console.log(response);
-			} catch (error) {
+			}
+			catch (error) {
 				alert("Login failed !");
 				console.log(error);
 			}
@@ -66,12 +73,6 @@ export default {
 				this.passWord = inputValue.content;
 			}
 			console.log({ username: this.userName, password: this.passWord });
-		},
-	},
-	computed: {
-		// enable login button when input field is not empty
-		isDisable() {
-			return this.userName.length === 0 || this.passWord.length === 0;
 		},
 	},
 };

@@ -26,7 +26,9 @@
           </div>
           <div class="login__footer">
             <!-- 1 way to use router-link to change page without having href -->
-            <router-link :to="'/signup'">You don't have account ??</router-link>
+            <router-link :to="'/register'"
+              >You don't have account ??</router-link
+            >
             <a href="">Forgot password</a>
           </div>
         </div>

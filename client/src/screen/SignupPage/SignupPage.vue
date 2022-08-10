@@ -15,7 +15,7 @@
                   :icon="input.icon"
                   :type="input.type"
                   :inputIndex="index"
-                  @on-input="onChangeInput"
+                  @onInput="inputSubmit"
                 />
               </div>
               <div class="register__infocontainer--block2">

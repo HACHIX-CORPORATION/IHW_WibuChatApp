@@ -1,6 +1,14 @@
 import FormInput from "@/components/FormInput/FormInput.vue";
 import ImageSelector from "@/components/ImageSelector/ImageSelector.vue";
 import Constant from "@/constant/Constant";
+import axios from "axios";
+
+const baseUrl = "http://127.0.0.1:5000";
+axios.defaults.headers = {
+	"Cache-Control": "no-cache",
+	Pragma: "no-cache",
+	Expires: "0",
+};
 
 export default {
 	name: "SignupPage",
@@ -11,22 +19,26 @@ export default {
 
 	data() {
 		return {
+			routes: [{ name: "Login", url: "/login" }],
 			caption: "Choose your waifu",
 			inputInfos: Constant.REGISTER_INFOS,
 			invalid: true,
 			imagePreview: "",
 			images: Constant.AVATAR_IMAGES,
+			userName: "",
+			passWord: "",
+			rePassword: "",
+			telephoneNum: "",
+			mailAdd: "",
+			dobInfo: "",
+			avatarImage: "",
 		};
 	},
 	methods: {
-		onChangeInput(data) {
-			this.inputInfos[data.index].info = data.content;
-		},
 		displaySubmit() {
 			this.invalid = !this.invalid;
 		},
-		onSubmit() // check all input field'value is empty
-		{
+		async onSubmit() {
 			if (this.inputInfos[0].info == "") {
 				alert("Please insert username");
 			} else if (this.inputInfos[1].info == "") {
@@ -64,10 +76,60 @@ export default {
 				) {
 					alert("Mail invalid");
 				} else {
-					alert("Register successfully !");
-					this.$router.push("login");
+					try {
+						let response = await axios.post(baseUrl + "/register", {
+							username: this.userName,
+							password: this.passWord,
+							repassword: this.rePassword,
+							telephone: this.telephoneNum,
+							mail: this.mailAdd,
+							date: this.dobInfo,
+							avatar: this.avatarImage,
+						});
+						console.log(response);
+						if (response.status === 200) {
+							alert("Register successfully !");
+							this.$router.push("login");
+						} else {
+							throw new Error("register failed");
+						}
+					} catch (error) {
+						alert("Register failed !!!!");
+						console.log(error);
+					}
 				}
 			}
 		},
+		inputSubmit(inputValue) {
+			if (inputValue.index === 0) {
+				this.userName = inputValue.content;
+			}
+			if (inputValue.index === 1) {
+				this.passWord = inputValue.content;
+			}
+			if (inputValue.index === 2) {
+				this.rePassword = inputValue.content;
+			}
+			if (inputValue.index === 3) {
+				this.telephoneNum = inputValue.content;
+			}
+			if (inputValue.index === 4) {
+				this.mailAdd = inputValue.content;
+			}
+			if (inputValue.index === 5) {
+				this.dobInfo = inputValue.content;
+			}
+			this.inputInfos[inputValue.index].info = inputValue.content;
+			// console.log(inputValue);
+			console.log({
+				username: this.userName,
+				password: this.passWord,
+				repassword: this.rePassword,
+				telephone: this.telephoneNum,
+				mail: this.mailAdd,
+				date: this.dobInfo,
+			});
+		},
+		// check all input field'value is empty
 	},
 };
