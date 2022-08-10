@@ -36,8 +36,8 @@ export default {
 			try {
 				// this.$router.push({ name: "Lobby" });
 				let response = await axios.post(baseUrl + "/login", {
-					username: "fsdf",
-					password: "sdafasfsdf",
+					username: "tuan",
+					password: "admin",
 				});
 				console.log({ response });
 			} catch (error) {

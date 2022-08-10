@@ -41,7 +41,7 @@ def login():
                 # refesh_token = create_refresh_token(identity=data1)     #refesh_token = create_refresh_token(identity=data['username'])
                 access_token = create_access_token(identity=data['username'])
                 refesh_token = create_refresh_token(identity=data['username'])
-                resp = jsonify({'message' : 'login success',
+                resp = jsonify({'message' : 'Logged in successfully',
                                 'id' : user.id,
                                 'set_access_cookies' : access_token,
                                 'set_refresh_cookies' : refesh_token

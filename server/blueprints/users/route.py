@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request, render_template
 from flask_jwt_extended import get_jwt_identity, jwt_required, unset_jwt_cookies
 from blueprints.users import controller as user_ctrl
 from app.db import db
+from http import HTTPStatus
 
 user_master: Blueprint = Blueprint('user_master', __name__)
 
@@ -11,20 +12,28 @@ def register():
     try:
         user_ctrl.register_user()
         content = {
-            'message': 'User created'
+            'message': 'successful registration'
         }
+        status = HTTPStatus.OK
+        # 200
 
     except ValueError as ex:
 
         content = {
             'message': '{}'.format(str(ex))
         }
+        status = HTTPStatus.BAD_REQUEST
+        #400
+        # ví dụ: cú pháp yêu cầu không đúng định dạng, khung thông báo yêu cầu không hợp lệ hoặc lừa đảo yêu cầu định tuyến
 
     except Exception:
         content = {
             'message': 'Create user failed'
         }
-    return jsonify(content)
+        status = HTTPStatus.INTERNAL_SERVER_ERROR
+        #500
+        #Máy chủ gặp tình huống không biết xử lý thế nào.
+    return jsonify(content),status
 
 
 # @user_master.route('/login' , methods = ['GET','POST'])
@@ -33,18 +42,21 @@ def login():
     # if request.method == 'POST':
     try:
         result = user_ctrl.login()
-        return result
+        status = HTTPStatus.OK
+        return result,status
 
     except ValueError as ex:
         content = {
             'message': '{}'.format(str(ex))
         }
+        status = HTTPStatus.NOT_FOUND
 
     except Exception:
         content = {
             'message': 'Login user failed'
         }
-    return jsonify(content)
+        status = HTTPStatus.INTERNAL_SERVER_ERROR
+    return jsonify(content),status
 
     # return render_template('index.html')
 
