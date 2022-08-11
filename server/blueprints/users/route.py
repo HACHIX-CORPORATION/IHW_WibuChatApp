@@ -9,6 +9,9 @@ user_master: Blueprint = Blueprint('user_master', __name__)
 
 @user_master.route('/register', methods=['POST'])
 def register():
+    """
+    file: ./schemas/user_register.yml
+    """
     try:
         user_ctrl.register_user()
         content = {
@@ -39,7 +42,9 @@ def register():
 # @user_master.route('/login' , methods = ['GET','POST'])
 @user_master.route('/login', methods=['POST'])
 def login():
-    # if request.method == 'POST':
+    """
+    file: ./schemas/user_login.yml
+    """
     try:
         result = user_ctrl.login()
         status = HTTPStatus.OK
@@ -58,7 +63,6 @@ def login():
         status = HTTPStatus.INTERNAL_SERVER_ERROR
     return jsonify(content),status
 
-    # return render_template('index.html')
 
 # @user_master.route('/<user_id>', methods=['GET'])
 # @jwt_required()
@@ -85,4 +89,5 @@ def protected():
 def logout():
     resp = jsonify({'message': 'logout success'})
     unset_jwt_cookies(resp)
-    return resp
+    status = HTTPStatus.OK
+    return resp,status

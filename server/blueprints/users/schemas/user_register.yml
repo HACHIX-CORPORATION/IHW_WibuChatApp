@@ -1,0 +1,51 @@
+Create a account
+---
+tags:
+  - User
+parameters:
+  - name: doc_content
+    in: body
+    schema:
+      type: object
+      properties:
+        username:
+          type: string
+          example: tuan
+        password:
+          type: string
+          example: admin
+        rePassword:
+          type: string
+          example: admin
+        telephone:
+          type: string
+          example: 01234566788
+        mail:
+          type: string
+          example: minhtuan31102002@gmail.com
+        date:
+          type: string
+          example: "2019-07-02"
+        avatar:
+          type: string
+          example: asjhdjahsdjhasjd
+responses:
+  200:
+    description: OK
+    examples:
+      application/json:
+        {
+          "message": "successful registration"
+        }
+  400:
+    description: Bad Request
+    examples:
+      application/json: { "message": "The user already exitis" }
+  500:
+    description: Internal Server Error
+    examples:
+      application/json: { "message": "Create user failed"}
+
+
+
+

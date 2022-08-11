@@ -56,18 +56,20 @@ def login():
                 if user.count > 5 :
                     user.locktime = 30
                     db.session.commit()
+                    raise ValueError("you have entered wrong more than 5 times")
+                raise ValueError("Incorrect Password")
 
-                    if user.locktime > 0 :
-                        while user.locktime > 0 :
-                            user.locktime -= 1
-                            time.sleep(1)
-                            db.session.commit()
-                            continue
-                        return {'message' : 'you can wait {} second'.format(int(user.locktime)) }
+                #     if user.locktime > 0 :
+                #         while user.locktime > 0 :
+                #             user.locktime -= 1
+                #             time.sleep(1)
+                #             db.session.commit()
+                #             continue
+                #         return {'message' : 'you can wait {} second'.format(int(user.locktime))}
                             
-                        
-                    return {'message' : 'Incorect Passworddd'}
-                return {'message' : 'Incorect Password'}
+                                  
+                #     return {'message' : 'Incorect Passworddd'}
+                # return {'message' : 'Incorect Password'}
         
     except Exception as ex:
         db.session.rollback()

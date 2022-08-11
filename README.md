@@ -2,7 +2,7 @@
 Create Chat App for Internship '
 
 # run server
-Bước 1 : cài python version 3.10.5 qua link https://www.python.org/downloads/release/python-3105/
+Bước 1 : cài python version 3.9.5 
 
 Bước 2 : bật command Prompt
 
@@ -12,6 +12,7 @@ Bước 2 : nhập : pip install Flask
                 pip install Flask-Cors==1.10.3
                 pip install flask-socketio
                 pip install Flask-SQLAlchemy 
+                pip install flask-restplus
         : đóng command Prompt
 
 

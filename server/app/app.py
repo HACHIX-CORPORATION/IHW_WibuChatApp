@@ -1,5 +1,5 @@
 from socket import socket
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session ,jsonify
 from flask_jwt_extended import JWTManager, get_jwt_identity, jwt_required
 from flask_restful import Api
 from blueprints.users.route import user_master
@@ -9,15 +9,32 @@ from flask_socketio import SocketIO, send, join_room, leave_room, emit
 from blueprints.messages.models import MessageModel
 from blueprints.users.models import UserModel
 from blueprints.rooms.models import RoomModel
+# from flask_swagger_ui import get_swaggerui_blueprint
 import time
+from flasgger import Swagger
 
 
 app = Flask(__name__, instance_relative_config=True,
             template_folder='../../client/dist')
 
+swagger = Swagger(app)
+
 # app = Flask(__name__, instance_relative_config=True,
 #             template_folder='../../client/dist', static_folder='../../client/dist/static')
 
+
+# SWAGGER_URL = '/swagger'
+# API_URL = '/static/swagger.json'
+# API_URL = '../blueprints/users/schemas/swagger.json'
+# API_URL = '/static/user.yml'
+# SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+#     SWAGGER_URL,
+#     API_URL,
+#     config={
+#         'app_name': "Seans-Python-Flask-REST-Boilerplate"
+#     }
+# )
+# app.register_blueprint(SWAGGERUI_BLUEPRINT , url_prefix=SWAGGER_URL)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
