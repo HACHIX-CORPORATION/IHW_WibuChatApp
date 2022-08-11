@@ -96,6 +96,7 @@ export default {
 					} catch (error) {
 						alert("Register failed !!!!");
 						console.log(error);
+						console.log(error);
 					}
 				}
 			}
