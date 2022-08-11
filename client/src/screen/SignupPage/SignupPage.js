@@ -95,7 +95,11 @@ export default {
 							throw new Error("register failed");
 						}
 					} catch (error) {
-						alert("Register failed !!!!");
+						if (error.response.status === 400) {
+							alert("This username already exited, try new one");
+						} else {
+							alert("Register failed !!!!");
+						}
 						console.log(error);
 					}
 				}
