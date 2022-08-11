@@ -49,7 +49,7 @@ export default {
 				// check status from response axios
 				if (response.status === 200) {
 					alert("Login succesfully");
-					this.$router.push({ name: "Lobby" });
+					// this.$router.push({ name: "Lobby" });
 				}
 				// console.log(response);
 			}

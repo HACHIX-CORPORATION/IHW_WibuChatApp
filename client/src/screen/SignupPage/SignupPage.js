@@ -80,7 +80,7 @@ export default {
 						let response = await axios.post(baseUrl + "/register", {
 							username: this.userName,
 							password: this.passWord,
-							repassword: this.rePassword,
+							rePassword: this.rePassword,
 							telephone: this.telephoneNum,
 							mail: this.mailAdd,
 							date: this.dobInfo,
