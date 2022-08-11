@@ -46,8 +46,8 @@ export default {
         index: this.inputIndex,
         content: this.inputContent,
       };
-      // emit 'on-input' to parent
-      this.$emit(`on-input`, inputInfo);
+      // emit 'onInput' to parent
+      this.$emit(`onInput`, inputInfo);
     },
   },
 };

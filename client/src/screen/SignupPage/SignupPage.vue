@@ -19,7 +19,7 @@
                 />
               </div>
               <div class="register__infocontainer--block2">
-                <ImageSelector :caption="caption" />
+                <ImageSelector :caption="caption"  />
               </div>
             </div>
             <div class="submit__checkbox">
