@@ -6,6 +6,7 @@
       </div>
       <div class="sidebar--logout">
         <fa class="icon" icon="arrow-right-arrow-left" @click="onSignout" />
+        <h3>Logout</h3>
       </div>
     </div>
   </div>

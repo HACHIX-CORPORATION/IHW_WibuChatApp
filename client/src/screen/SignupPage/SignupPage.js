@@ -96,41 +96,40 @@ export default {
 					} catch (error) {
 						alert("Register failed !!!!");
 						console.log(error);
-						console.log(error);
 					}
 				}
 			}
 		},
-		inputSubmit(inputValue) {
-			if (inputValue.index === 0) {
-				this.userName = inputValue.content;
-			}
-			if (inputValue.index === 1) {
-				this.passWord = inputValue.content;
-			}
-			if (inputValue.index === 2) {
-				this.rePassword = inputValue.content;
-			}
-			if (inputValue.index === 3) {
-				this.telephoneNum = inputValue.content;
-			}
-			if (inputValue.index === 4) {
-				this.mailAdd = inputValue.content;
-			}
-			if (inputValue.index === 5) {
-				this.dobInfo = inputValue.content;
-			}
-			this.inputInfos[inputValue.index].info = inputValue.content;
-			// console.log(inputValue);
-			console.log({
-				username: this.userName,
-				password: this.passWord,
-				repassword: this.rePassword,
-				telephone: this.telephoneNum,
-				mail: this.mailAdd,
-				date: this.dobInfo,
-			});
-		},
-		// check all input field'value is empty
 	},
+	inputSubmit(inputValue) {
+		if (inputValue.index === 0) {
+			this.userName = inputValue.content;
+		}
+		if (inputValue.index === 1) {
+			this.passWord = inputValue.content;
+		}
+		if (inputValue.index === 2) {
+			this.rePassword = inputValue.content;
+		}
+		if (inputValue.index === 3) {
+			this.telephoneNum = inputValue.content;
+		}
+		if (inputValue.index === 4) {
+			this.mailAdd = inputValue.content;
+		}
+		if (inputValue.index === 5) {
+			this.dobInfo = inputValue.content;
+		}
+		this.inputInfos[inputValue.index].info = inputValue.content;
+		// console.log(inputValue);
+		console.log({
+			username: this.userName,
+			password: this.passWord,
+			repassword: this.rePassword,
+			telephone: this.telephoneNum,
+			mail: this.mailAdd,
+			date: this.dobInfo,
+		});
+	},
+	// check all input field'value is empty
 };

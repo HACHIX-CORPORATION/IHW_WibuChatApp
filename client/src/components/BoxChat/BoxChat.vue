@@ -10,7 +10,7 @@
             v-for="(messenger, idx) in messengerList"
             :key="idx"
           >
-            <img src="../../assets/akame.jpg" alt="" />
+            <img src="../../assets/02.jpg" alt="" />
             <div class="messenger__text">{{ messenger }}</div>
           </div>
         </div>
@@ -19,7 +19,6 @@
         <form @submit.prevent="send" class="boxchat__input--layout">
           <input type="text" placeholder=" Aa" v-model="newText" />
           <button type="submit" class="submit">Send</button>
-          
         </form>
       </div>
     </div>
