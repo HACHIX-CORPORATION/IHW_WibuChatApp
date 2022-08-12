@@ -76,8 +76,9 @@ const AVATAR_IMAGES = [
 		url: "rem.jpg",
 	},
 ];
-
+const PLACEHOLDER_TEXT = "   Aa";
 export default {
 	REGISTER_INFOS,
 	AVATAR_IMAGES,
+	PLACEHOLDER_TEXT,
 };
