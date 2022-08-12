@@ -1,7 +1,5 @@
-from app.app import app
+from app.app import app,socketio
 from app.db import db
-from app.app import socketio
-
 
 if __name__ == "__main__" :
     db.init_app(app)

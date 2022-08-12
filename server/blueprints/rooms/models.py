@@ -3,8 +3,15 @@ from app.db import db
 class RoomModel(db.Model):
     __tablename__ = 'rooms'
     roomID = db.Column(db.Integer , primary_key = True)
-    userID = db.Column(db.Integer)
+    roomName = db.Column(db.String(256),nullable=False)
 
-    def __init__(self,content: dict) :
-        for key, value in content.items():
-            setattr(self,key,value)
+    def __init__(self,roomName):
+        self.roomName = roomName
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def find_by_name(cls,roomName):
+        return cls.query.filter_by(roomName = roomName).first()

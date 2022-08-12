@@ -24,18 +24,19 @@ def register_user(**data):
 
 def login():
     try:
-        data = request.get_json()
-        user = UserModel.find_by_name(data['username'])
+        data1 = request.form.get('username') #da sua data = request.get_json()
+        data2 = request.form.get('password')
+        user = UserModel.find_by_name(data1)  #da sua user = UserModel.find_by_name(data['username'])
         if user is None:
             raise ValueError("The user not found")
 
         if user:
-            if hmac.compare_digest(user.password, data['password']):
+            if hmac.compare_digest(user.password, data2):  #da sua if hmac.compare_digest(user.password, data['password']):
                 user.locktime == 0
                 user.count = 0
                 db.session.commit()
-                access_token = create_access_token(identity=data['username'])
-                refesh_token = create_refresh_token(identity=data['username'])
+                access_token = create_access_token(identity=data1)    #da sua  access_token = create_access_token(identity=data['username'])
+                refesh_token = create_refresh_token(identity=data1)     #refesh_token = create_refresh_token(identity=data['username'])
                 resp = jsonify({'message' : 'login success',
                                 'id' : user.id,
                                 'set_access_cookies' : access_token,
@@ -63,42 +64,9 @@ def login():
                         
                     return {'message' : 'Incorect Passworddd'}
                 return {'message' : 'Incorect Password'}
-
-
-                        
-                    
-
-        # if user:
-
-        #         if hmac.compare_digest(user.password, data['password']):
-        #             user.count = 0
-        #             db.session.commit()
-
-        #             return {
-        #                 'message': 'login success',
-        #                 'id': user.id
-        #             }
-        #         else:
-        #             user.count = user.count + 1
-        #             db.session.commit()
-        #             if user.count < 5 :
-        #                 return {'message' : 'Incorect Password'}
-        #             elif user.count >= 5:
-        #                 return {'message' : 'you cant login'}
-
-# if user.count < 3:
-
-            # else:
-                # return {'message' : 'Incorect Password three times , you must wait 30 second to login '}
-
-            # time.sleep(30)
-            # user.count = 0
-            # db.session.commit()
-            # return {'message' : "đăng nhập lại"}
-
+        
     except Exception as ex:
-
-        # db.session.rollback()
+        db.session.rollback()
         raise ex
     finally:
         db.session.close()
@@ -109,3 +77,7 @@ def get_user_by_id(user_id: int):
     if user:
         return user.convert_json()
     return {'message': 'The user not found'}
+
+def get_all_users():
+    user = UserModel.get_all_users()
+    return user.convert_json()
