@@ -53,7 +53,7 @@ export default {
 				}
 				// console.log(response);
 			} catch (error) {
-				alert("Login failed !");
+				alert("Username or password is not correct!");
 				console.log(error);
 			}
 		},

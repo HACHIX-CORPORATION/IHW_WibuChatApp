@@ -1,5 +1,5 @@
 .sidebar__container {
-	height: 100%;
+	height: 100vh;
 	width: 100%;
 	background-color: #fabb6a;
 	overflow-x: hidden;
@@ -11,21 +11,17 @@
 
 .sidebar__container a {
 	text-align: center;
-	padding: 8px 10px 8px 16px;
 	text-decoration: none;
-	font-size: 25px;
+	font-size: 30px;
 	color: #000000;
 	display: block;
 	width: 100%;
+	margin-top: 10px;
 }
 
-.sidebar__container a:hover {
-	color: #ffffff;
-	background-color: #ff9a15;
-}
 .sidebar--logout {
 	text-align: center;
-	margin-top: 770px;
+	margin-top: 700px;
 }
 .icon {
 	cursor: pointer;
@@ -43,4 +39,38 @@
 	.sidebar__container a {
 		font-size: 18px;
 	}
+}
+.rooms {
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+}
+.rooms input {
+	width: 70%;
+	margin-right: 5%;
+}
+.rooms button {
+	cursor: pointer;
+	width: 60px;
+}
+.room > button:hover {
+	background-color: rgb(243, 157, 29);
+}
+.roomlist--new-added {
+	color: rgb(17, 17, 17);
+	font: 2em monospace;
+	background-color: #f7c37f;
+	margin: 5px;
+	padding-left: 10px;
+	border-radius: 10px;
+	border: 1px solid;
+}
+.roomlist--new-added:hover {
+	cursor: pointer;
+	color: rgb(255, 255, 255);
+	background-color: #ff9a15;
+	margin: 15px;
+	padding-left: 30px;
+	border-radius: 10px;
+	border: 2px solid;
 }
