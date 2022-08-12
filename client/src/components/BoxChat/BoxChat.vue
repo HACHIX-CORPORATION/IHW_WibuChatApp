@@ -15,18 +15,7 @@
   </div>
 </template>
 
-<script>
-import BoxMain from "../../components/BoxMain/BoxMain.vue";
-export default {
-  name: "BoxChat",
-  components: { BoxMain },
-  data() {
-    return {
-      placeholderText: "   Aa",
-      appName: "Wichat",
-    };
-  },
-};
+<script src="./BoxChat.js">
 </script>
 
 <style scoped src="./BoxChat.css">

@@ -4,15 +4,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "BoxMain",
-};
+<script src="./BoxMain.js">
+
 </script>
 
-<style scoped>
-.screen {
-  width: 100%;
-  height: 85vh;
-}
+<style scoped src="./BoxMain.css">
+
 </style>

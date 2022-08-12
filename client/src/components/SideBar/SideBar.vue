@@ -16,20 +16,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "SideBar",
-  data() {
-    return {
-      routes: [{ name: "Home", url: "/" }],
-    };
-  },
-  methods: {
-    onSignout() {
-      this.$router.push({ name: "Home" });
-    },
-  },
-};
+<script src="./SideBar.js">
 </script>
 
 <style scoped src="./SideBar.css">
