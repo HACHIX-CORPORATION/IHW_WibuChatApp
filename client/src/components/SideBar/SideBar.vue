@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="sidebar__container">
       <div class="sidebar--user">
-        <a href="#about">Room1</a>
+        <a href="#about">Room list</a>
       </div>
       <div class="sidebar--logout">
         <fa class="icon" icon="arrow-right-arrow-left" @click="onSignout" />
