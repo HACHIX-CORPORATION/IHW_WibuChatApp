@@ -7,7 +7,7 @@
       <div class="boxchat__screen"><BoxMain /></div>
       <div class="boxchat__input">
         <div class="boxchat__input--layout">
-          <input type="text" placeholder="  Aa" />
+          <input type="text" :placeholder="placeholderText" />
           <button class="submit">Send</button>
         </div>
       </div>
@@ -22,6 +22,7 @@ export default {
   components: { BoxMain },
   data() {
     return {
+      placeholderText: "   Aa",
       appName: "Wichat",
     };
   },
