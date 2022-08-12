@@ -12,27 +12,9 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script src="./ChatIntro.js">
 </script>
 
-<style>
-.intro {
-  height: 50vh;
-  width: 100%;
-}
+<style src="./ChatIntro.css">
 
-.intro__container {
-  margin-left: 10%;
-  width: 40%;
-  color: white;
-}
-
-h1 {
-  margin-top: 30px;
-  font-size: 50px;
-}
-.intro__container-text h4 {
-  font-size: 24px;
-}
 </style>
