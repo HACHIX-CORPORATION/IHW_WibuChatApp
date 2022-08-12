@@ -7,15 +7,6 @@
           <input type="text" placeholder="add new ..." v-model="newRoom" />
           <button @click="addNewRoom">Add</button>
         </div>
-        <div class="roomlist">
-          <div
-            class="roomlist__container"
-            v-for="(list, index) in Lists"
-            :key="index"
-          >
-            <div class="roomlist--new-added">{{ list }}</div>
-          </div>
-        </div>
       </div>
       <div class="sidebar--logout">
         <fa class="icon" icon="arrow-right-arrow-left" @click="onSignout" />
