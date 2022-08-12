@@ -44,15 +44,7 @@ def login():
                 set_access_cookies(resp,access_token)
                 set_refresh_cookies(resp,refesh_token)
                 return resp
-                # cookie = set_access_cookies(identity=data['username'])
-                # return {
-                #         'message': 'login success',
-                #         'id': user.id,
-                #         'set_access_cookies' : access_token,
-                #         'refesh_token' : refesh_token
-                #         # 'cooki' : cookie
-                        
-                #     }
+
             else :
                 user.count += 1
                 db.session.commit()
