@@ -3,6 +3,7 @@ from flask import Flask, redirect, render_template,request
 from flask_restful import Api
 # from blueprints.users.route import user_master
 from blueprints.users.route import user_master
+from flask_cors import CORS
 
 
 
@@ -10,7 +11,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
 
-
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 
 api = Api(app)
