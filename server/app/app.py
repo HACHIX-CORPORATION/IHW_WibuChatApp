@@ -12,11 +12,19 @@ from blueprints.rooms.models import RoomModel
 import time
 
 
-app = Flask(__name__, template_folder='templates')
+# app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, instance_relative_config=True,
+            template_folder='../../client/dist')
+
+# app = Flask(__name__, instance_relative_config=True,
+#             template_folder='../../client/dist', static_folder='../../client/dist/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
 
-CORS(app, resources={r'/*': {'origins': '*'}})
+# CORS(app, resources={r'/*': {'origins': '*'}})
+
+CORS(app, resource={r"/*": {"origins": "*"}}, allow_headers=[
+    "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "cache-control", "Pragma", "Expires", "Cross-Origin-Embedder-Policy", "Cross-Origin-Opener-Policy" ,"Access-Control-Allow-Credentials"], supports_credentials= True)
 
 socketio = SocketIO(app, cors_allowed_origins='*')
 
@@ -80,14 +88,29 @@ def on_join(data):
 def test_disconnect():
     print('[DISCONNECTED] ' + request.sid)
 
-@app.route('/')
-def home():
-    return render_template('home.html')
 
-@app.route('/hi')
-def home1():
-    return render_template('protected.html')
+@app.route("/", defaults={"path": ""})
+def root(path):
+    return main("index.html")
 
-@app.route('/homechat')
-def home3():
-    return render_template('homechat.html')
+
+def main(path):
+    return render_template("index.html")
+
+@app.route("/home/<path:path>")
+def home(path):
+    return main(path)
+
+
+
+# @app.route('/')
+# def home():
+#     return render_template('home.html')
+
+# @app.route('/hi')
+# def home1():
+#     return render_template('protected.html')
+
+# @app.route('/homechat')
+# def home3():
+#     return render_template('homechat.html')
