@@ -19,6 +19,7 @@ export default {
         return {
             routes: [{ name: "Lobby", url: "/lobby" }],
             inputInfos: [Constant.REGISTER_INFOS[0], Constant.REGISTER_INFOS[1]],
+            passwordIndex: Constant.PASSWORD_INDEX,
             userName: "",
             passWord: "",
         };
@@ -32,11 +33,8 @@ export default {
     methods: {
         onShow() {
             // if type = text -> convert type = password and vice_versa
-            if (this.inputInfos[1].type == "text") {
-                this.inputInfos[1].type = "password";
-            } else {
-                this.inputInfos[1].type = "text";
-            }
+            console.log(this.passwordIndex);
+            this.inputInfos[this.passwordIndex].type === "text" ? this.inputInfos[this.passwordIndex].type = "password" : this.inputInfos[this.passwordIndex].type = "text";
         },
         async onLogin() {
             try {
