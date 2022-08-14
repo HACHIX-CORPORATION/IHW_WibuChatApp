@@ -24,7 +24,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
 # CORS(app, resources={r'/*': {'origins': '*'}})
 
 CORS(app, resource={r"/*": {"origins": "*"}}, allow_headers=[
-    "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "cache-control", "Pragma", "Expires", "Cross-Origin-Embedder-Policy", "Cross-Origin-Opener-Policy" ,"Access-Control-Allow-Credentials"], supports_credentials= True)
+    "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "cache-control", "Pragma", "Expires","Access-Control-Allow-Credentials"], supports_credentials= True)
 
 socketio = SocketIO(app, cors_allowed_origins='*')
 
