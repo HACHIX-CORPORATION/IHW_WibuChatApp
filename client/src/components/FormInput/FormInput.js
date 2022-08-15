@@ -1,5 +1,5 @@
 export default {
-    name: "FormInput",
+    name: 'FormInput',
     props: {
         title: {
             type: String,
@@ -19,7 +19,7 @@ export default {
     },
     data() {
         return {
-            inputContent: "",
+            inputContent: '',
         };
     },
 
