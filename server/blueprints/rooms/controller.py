@@ -14,3 +14,12 @@ def create_table():
         raise ex
     finally:
         db.session.close()
+
+def get_all_rooms():
+    rooms = RoomModel.get_all_rooms()
+    result = []
+
+    for room in rooms:
+        result.append(room.convert_json())
+
+    return result

@@ -17,6 +17,20 @@ class MessageModel(db.Model):
     #     for key, value in content.items():
     #         setattr(self,key,value)
 
+    def convert_json(self):
+        inf_list = ['messageID', 'roomID' ,'userID', 'message']
+        inf_list_DETAIL = [self.messageID, self.roomID ,self.userID, self.message]
+                    
+        mess_infor = {}
+        for index, key in enumerate(inf_list):
+            mess_infor[key] = inf_list_DETAIL[index]
+
+        return mess_infor
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def get_mess_by_roomID(cls,roomID):
+        return cls.query.filter_by(roomID = roomID).all()

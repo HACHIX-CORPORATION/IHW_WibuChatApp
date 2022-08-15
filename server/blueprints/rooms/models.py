@@ -12,6 +12,13 @@ class RoomModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def convert_json(self):
+        return {'roomID' : self.roomID , 'roomName' : self.roomName}
+
     @classmethod
     def find_by_name(cls,roomName):
         return cls.query.filter_by(roomName = roomName).first()
+
+    @classmethod
+    def get_all_rooms(cls):
+        return cls.query.all()
