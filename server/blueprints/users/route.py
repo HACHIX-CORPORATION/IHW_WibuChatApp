@@ -2,8 +2,7 @@ from flask import Blueprint, jsonify, request ,render_template
 from flask_jwt_extended import get_jwt_identity, jwt_required, unset_jwt_cookies
 from blueprints.users import controller as user_ctrl
 from app.db import db
-
-
+from http import HTTPStatus
 
 user_master: Blueprint = Blueprint('user_master', __name__)
 
@@ -12,47 +11,55 @@ def register():
     try :
         user_ctrl.register_user()
         content = {
-            'message' : 'User created'
+            'message' : 'successful registration'
         }
+        status = HTTPStatus.OK
+        #200
 
     except ValueError as ex:
         
         content = {
             'message' : '{}'.format(str(ex))
         }
+        status = HTTPStatus.BAD_REQUEST
+        #400
 
     except Exception :
         content = {
             'message' : 'Create user failed'
         }
-    return jsonify(content)
+        status = HTTPStatus.INTERNAL_SERVER_ERROR
+        #500
+    return jsonify(content),status
 
 
-@user_master.route('/login' , methods = ['GET','POST'])
+@user_master.route('/login' , methods = ['POST'])
 def login():
-    if request.method == 'POST':
-        try:
-            result = user_ctrl.login()
-            return result
+    try:
+        result = user_ctrl.login()
+        status = HTTPStatus.OK
+        return result,status
 
-        except ValueError as ex:
-            content = {
-                'message' : '{}'.format(str(ex))
-            }
+    except ValueError as ex:
+        content = {
+            'message' : '{}'.format(str(ex))
+        }
+        status = HTTPStatus.NOT_FOUND
 
-        except Exception :
-            content = {
-                'message' : 'Login user failed'
-            }
-        return jsonify(content)
-    return render_template('index.html')
+    except Exception :
+        content = {
+            'message' : 'Login user failed'
+        }
+        status = HTTPStatus.INTERNAL_SERVER_ERROR
+    return jsonify(content),status
+    
 
-# @user_master.route('/<user_id>', methods=['GET'])
-# @jwt_required()
-# def get_user_ID(user_id):
-#     user_id = int(user_id)
-#     user = user_ctrl.get_user_by_id(user_id)
-#     return user
+@user_master.route('/<user_id>', methods=['GET'])
+@jwt_required()
+def get_user_ID(user_id):
+    user_id = int(user_id)
+    user = user_ctrl.get_user_by_id(user_id)
+    return user
 
 @user_master.route('/all', methods=['GET'])
 def getall():
@@ -69,7 +76,8 @@ def protected():
 def logout():
     resp = jsonify({'message' : 'logout success'})
     unset_jwt_cookies(resp)
-    return resp
+    status = HTTPStatus.OK
+    return resp,status
 
 
 

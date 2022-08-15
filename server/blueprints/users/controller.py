@@ -24,20 +24,19 @@ def register_user(**data):
 
 def login():
     try:
-        data1 = request.form.get('username') #da sua data = request.get_json()
-        data2 = request.form.get('password')
-        user = UserModel.find_by_name(data1)  #da sua user = UserModel.find_by_name(data['username'])
+        data = request.get_json() 
+        user = UserModel.find_by_name(data['username'])  
         if user is None:
             raise ValueError("The user not found")
 
         if user:
-            if hmac.compare_digest(user.password, data2):  #da sua if hmac.compare_digest(user.password, data['password']):
+            if hmac.compare_digest(user.password, data['password']):  
                 user.locktime == 0
                 user.count = 0
                 db.session.commit()
-                access_token = create_access_token(identity=data1)    #da sua  access_token = create_access_token(identity=data['username'])
-                refesh_token = create_refresh_token(identity=data1)     #refesh_token = create_refresh_token(identity=data['username'])
-                resp = jsonify({'message' : 'login success',
+                access_token = create_access_token(identity=data['username'])    
+                refesh_token = create_refresh_token(identity=data['username'])     
+                resp = jsonify({'message' : 'Logged in successfully',
                                 'id' : user.id,
                                 'set_access_cookies' : access_token,
                                 'set_refresh_cookies' : refesh_token
@@ -52,18 +51,19 @@ def login():
                 if user.count > 5 :
                     user.locktime = 30
                     db.session.commit()
-
-                    if user.locktime > 0 :
-                        while user.locktime > 0 :
-                            user.locktime -= 1
-                            time.sleep(1)
-                            db.session.commit()
-                            continue
-                        return {'message' : 'you can wait {} second'.format(int(user.locktime)) }
+                    raise ValueError("you have entered wrong more than 5 times")
+                raise ValueError("Incorrect Password")
+                    # if user.locktime > 0 :
+                    #     while user.locktime > 0 :
+                    #         user.locktime -= 1
+                    #         time.sleep(1)
+                    #         db.session.commit()
+                    #         continue
+                    #     return {'message' : 'you can wait {} second'.format(int(user.locktime)) }
                             
                         
-                    return {'message' : 'Incorect Passworddd'}
-                return {'message' : 'Incorect Password'}
+                #     return {'message' : 'Incorect Passworddd'}
+                # return {'message' : 'Incorect Password'}
         
     except Exception as ex:
         db.session.rollback()
