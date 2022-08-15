@@ -4,6 +4,7 @@ from flask_jwt_extended import JWTManager, get_jwt_identity, jwt_required
 from flask_restful import Api
 from blueprints.users.route import user_master
 from blueprints.rooms.router import room_master
+from blueprints.messages.route import message_master
 from flask_cors import CORS
 from flask_socketio import SocketIO, send, join_room, leave_room, emit
 from blueprints.messages.models import MessageModel
@@ -40,6 +41,7 @@ jwt = JWTManager(app)
 
 app.register_blueprint(user_master)
 app.register_blueprint(room_master)
+app.register_blueprint(message_master)
 
 
 @socketio.on('message')
