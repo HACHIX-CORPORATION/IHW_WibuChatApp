@@ -4,7 +4,7 @@
       <div class="sidebar--roomlist">
         <a href="#">{{ title }}</a>
         <RoomList
-          @addNewRoom="addNew"
+          @addNewRoom="addNewroom"
           :roomheader="roomHeader"
           :lists="Lists"
           :newroom="newRoom"

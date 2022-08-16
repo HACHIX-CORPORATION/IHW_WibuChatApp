@@ -23,7 +23,7 @@ export default {
 		onSignout() {
 			this.$router.push({ name: 'Home' });
 		},
-		async addNew(newname) {
+		async addNewroom(newname) {
 			if (this.newRoom != newname) {
 				this.Lists.push(newname);
 			}

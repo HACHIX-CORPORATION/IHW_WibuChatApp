@@ -6,9 +6,7 @@
 </template>
 
 <script src="./ChatLobby.js">
-
 </script>
 
 <style src="./ChatLobby.css">
-
 </style>

@@ -3,9 +3,7 @@
     <div class="footer__container">
       <div class="footer__container-info">
         <h2>WE ARE WICHAT</h2>
-        <div class="footer__container-social">
-
-        </div>
+        <div class="footer__container-social"></div>
       </div>
       <div class="footer__container-section">
         <div class="footer__container-product">
@@ -51,9 +49,7 @@
 </template>
 
 <script src="./ChatFooter.js">
-
 </script>
 
 <style src="./ChatFooter.css">
-
 </style>

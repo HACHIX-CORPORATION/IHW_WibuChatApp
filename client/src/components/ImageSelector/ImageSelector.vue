@@ -23,7 +23,6 @@
 </template>
 
 <script src="./ImageSelector.js">
-
 </script>
 
 <style scoped src="./ImageSelector.css">

@@ -13,9 +13,7 @@
 </template>
 
 <script src="./ChatIntro.js">
-
 </script>
 
 <style src="./ChatIntro.css">
-
 </style>
