@@ -1,36 +1,42 @@
 .sidebar__container {
-    height: 100vh;
-    width: 100%;
-    background-color: #fabb6a;
-    overflow-x: hidden;
-    padding-top: 17px;
-    border-right: 1px solid rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	background-color: #2460a0;
+	overflow-x: hidden;
+	border-right: 2px solid rgb(0, 0, 0);
+	flex-direction: column;
 }
 
 .sidebar__container a {
-    text-align: center;
-    text-decoration: none;
-    font-size: 30px;
-    color: #000000;
-    display: block;
-    width: 100%;
-    margin-top: 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 30px;
+	color: #ffffff;
+	display: block;
+	width: 100%;
 }
-
+.sidebar--roomlist {
+	height: 90%;
+}
 .sidebar--logout {
-    text-align: center;
-    margin-top: 700px;
+	padding-top: 10px;
+	margin: auto;
+	text-align: center;
 }
 
 .icon {
-    cursor: pointer;
-    height: 40px;
+	margin: auto;
+	color: #ffffff;
+	cursor: pointer;
+	height: 25px;
 }
 
 .icon:hover {
-    cursor: pointer;
-    transform: rotate(180deg);
-    transition: 1s;
+	cursor: pointer;
+	transform: rotate(180deg);
+	transition: 1s;
+}
+h3 {
+	letter-spacing: 5px;
+	color: aliceblue;
 }
