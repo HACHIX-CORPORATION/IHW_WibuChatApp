@@ -17,12 +17,11 @@ import time
 app = Flask(__name__, instance_relative_config=True,
             template_folder='../../client/dist')
 
-# app = Flask(__name__, instance_relative_config=True,
-#             template_folder='../../client/dist', static_folder='../../client/dist/static')
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
 
-# CORS(app, resources={r'/*': {'origins': '*'}})
+
 
 CORS(app, resource={r"/*": {"origins": "*"}}, allow_headers=[
     "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "cache-control", "Pragma", "Expires","Access-Control-Allow-Credentials"], supports_credentials= True)
@@ -44,49 +43,49 @@ app.register_blueprint(room_master)
 app.register_blueprint(message_master)
 
 
-@socketio.on('message')
-@jwt_required()
-def handle_message(data):
-    data1 = get_jwt_identity()
-    print('recevied message : ' + data)
-    user = UserModel.find_by_name(data1)
-    time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
+# @socketio.on('message')
+# @jwt_required()
+# def handle_message(data):
+#     data1 = get_jwt_identity()
+#     print('recevied message : ' + data)
+#     user = UserModel.find_by_name(data1)
+#     time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
 
-    if user:
-        message = MessageModel(roomID=1, userID=user.id, message=data)
-        message.save_to_db()
-        send(data1 + ' : ' + data + '(time :  ' + time_stamp + ' )', broadcast=True)
+#     if user:
+#         message = MessageModel(roomID=1, userID=user.id, message=data)
+#         message.save_to_db()
+#         send(data1 + ' : ' + data + '(time :  ' + time_stamp + ' )', broadcast=True)
 
 
 @socketio.on('chat_room')
-@jwt_required()
 def chat_room(data):
-    username = get_jwt_identity()
     mess = data['mess']
     room = data['room']
+    userID = data['userID']
     roomDB = RoomModel.find_by_name(room)
-    user = UserModel.find_by_name(username)
-    message = MessageModel(roomID=roomDB.roomID, userID=user.id, message=mess)
-    message.save_to_db()
-    emit("msg_room", username + " : " + mess, room=room)
+    user = UserModel.find_by_id(userID)
+    if roomDB and user:
+        message = MessageModel(roomID=roomDB.roomID, userID=user.id, message=mess)
+        message.save_to_db()
+        emit("msg_room", user.username + " : " + mess, room=room)
+    else :
+        send('failed message')
 
 
 @socketio.on('join')
-@jwt_required()
 def on_join(data):
-    username = get_jwt_identity()
     room = data['room']
+    userID = data['userID']
     join_room(room)
     roomDB = RoomModel.find_by_name(room)
-    if roomDB:
-        emit("msg_room", username + " has joined the " +
-             room + " room.", room=room)
+    user = UserModel.find_by_id(userID)
+    if roomDB and user:
+        emit("msg_room", user.username + " has joined the " + room + " room.", room=room)
     else:
         send('Not found room')
 
 
 @socketio.on('disconnect')
-@jwt_required()
 def test_disconnect():
     print('[DISCONNECTED] ' + request.sid)
 
@@ -113,6 +112,6 @@ def home(path):
 # def home1():
 #     return render_template('protected.html')
 
-# @app.route('/homechat')
-# def home3():
-#     return render_template('homechat.html')
+@app.route('/homechat')
+def home3():
+    return render_template('homechat.html')
