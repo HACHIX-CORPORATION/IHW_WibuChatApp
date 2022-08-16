@@ -16,8 +16,6 @@
   </div>
 </template>
 
-<script src="./ChatHeader.js">
-</script>
+<script src="./ChatHeader.js"></script>
 
-<style scoped src="./ChatHeader.css">
-</style>
+<style scoped src="./ChatHeader.css"></style>

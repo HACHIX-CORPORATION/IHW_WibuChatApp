@@ -14,7 +14,6 @@
 </template> 
 
 <script src="./FormInput.js">
-
 </script>
 
 <style src="./FormInput.css" scoped>

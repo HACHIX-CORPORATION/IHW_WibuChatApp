@@ -1,5 +1,4 @@
 <template>
-
   <body>
     <ChatHeader />
     <ChatIntro />
@@ -8,7 +7,6 @@
 </template>
 
 <script src="./HomePage.js">
-
 </script>
 
 <style scoped>
