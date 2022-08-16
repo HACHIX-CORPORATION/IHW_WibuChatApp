@@ -28,33 +28,21 @@ h1 {
 }
 
 .boxchat__input--layout {
-	padding: 30px;
+	padding: 15px;
 	display: flex;
 	flex-direction: row;
 	width: 90%;
 	margin: auto;
+	justify-content: space-around;
 }
 
 input {
-	border-radius: 10px 0 0 10px;
+	height: 40px;
+	border-radius: 10px;
 	font-size: 30px;
 	border: transparent;
 	width: 90%;
 	background-color: rgb(230, 230, 230);
-}
-
-.submit {
-	border-radius: 0 10px 10px 0;
-	font-size: 30px;
-	border: 1px solid transparent;
-	height: 80%;
-	background-color: #3e94f0;
-}
-
-.submit:hover {
-	cursor: pointer;
-	background-color: #2460a0;
-	color: white;
 }
 
 .boxchat__screen {
@@ -77,7 +65,7 @@ input {
 	flex-direction: row;
 	align-items: center;
 	column-gap: 20px;
-	background-color: #3e94f0;
+	background-color: #5865f2;
 	border-radius: 15px 15px 0 15px;
 	padding: 10px;
 }
@@ -92,4 +80,58 @@ input {
 .messenger__text {
 	display: block;
 	font-size: 15px;
+}
+button {
+	height: 40px;
+	margin-left: 10px;
+	font-family: inherit;
+	font-size: 20px;
+	background: royalblue;
+	color: white;
+	padding: 0.7em 1em;
+	padding-left: 0.9em;
+	display: flex;
+	align-items: center;
+	border: none;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: all 0.2s;
+}
+
+button span {
+	display: block;
+	margin-left: 0.3em;
+	transition: all 0.3s ease-in-out;
+}
+
+button svg {
+	display: block;
+	transform-origin: center center;
+	transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+	animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+	transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+	transform: translateX(5em);
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+	from {
+		transform: translateY(0.1em);
+	}
+
+	to {
+		transform: translateY(-0.1em);
+	}
 }
