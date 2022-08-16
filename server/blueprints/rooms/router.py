@@ -7,24 +7,27 @@ from blueprints.rooms import controller as room_ctrl
 room_master: Blueprint = Blueprint('room_master',__name__)
 
 @room_master.route('/room' , methods = ['POST'] )
-@jwt_required()
+# @jwt_required()
 def create_room():
     try:
         room_ctrl.create_table()
         content = {
             'message' : 'Room created'
         }
+        status = HTTPStatus.OK
 
     except ValueError as ex :
         content = {
             'message' : '{}'.format(str(ex))
         }
+        status = HTTPStatus.BAD_REQUEST
 
     except Exception as ex :
         content = {
             'message' : 'Create room failed'
         }
-    return jsonify(content)
+        status = HTTPStatus.INTERNAL_SERVER_ERROR
+    return jsonify(content),status
 
 @room_master.route('/rooms' , methods = ['GET'])
 def get_all_rooms():

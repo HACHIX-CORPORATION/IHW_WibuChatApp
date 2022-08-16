@@ -79,5 +79,13 @@ def get_user_by_id(user_id: int):
     return {'message': 'The user not found'}
 
 def get_all_users():
-    user = UserModel.get_all_users()
-    return user.convert_json()
+    users = UserModel.get_all_users()
+    # return user.convert_json()
+    result = []
+
+    for user in users:
+        result.append(user.convert_json())
+
+    return result
+
+
