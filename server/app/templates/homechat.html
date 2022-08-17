@@ -31,10 +31,7 @@
             });
 
             $('#sendGroup').on('click' , function (){
-                socket.emit('chat_room' , {'room' : $('#join_room').val() , 'mess' : $('#group_message').val()})
-                localStorage.setItem('mess' , $('#group_message').val())
-                const mes = localStorage.getItem('mess')
-                console.log(mes)
+                socket.emit('chat_room' , {'room' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'userID' : $('#userID').val()})
             })
 
             socket.on('msg_room',function(msg) {
@@ -43,7 +40,7 @@
 	        });
             
             $('form#join').submit(function(event) {
-                socket.emit('join', {room: $('#join_room').val()});
+                socket.emit('join', {room: $('#join_room').val() , userID : $('#userID').val()});
                 return false;
             });       
         });
@@ -71,6 +68,7 @@
 
             <form id="join" method="POST" action='#'>
                 <input type="text" name="join_room" id="join_room" placeholder="Room Name">
+                <input type="text" name="userID" id="userID" placeholder="User ID">
                 <input type="submit" value="Join Room">
             </form>
 
