@@ -55,7 +55,7 @@ def login():
     
 
 @user_master.route('/<user_id>', methods=['GET'])
-@jwt_required()
+# @jwt_required()
 def get_user_ID(user_id):
     user_id = int(user_id)
     user = user_ctrl.get_user_by_id(user_id)
@@ -66,11 +66,11 @@ def getall():
     result = user_ctrl.get_all_users()
     return result
 
-@user_master.route('/protected' , methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return {'message' : current_user}
+# @user_master.route('/protected' , methods=['GET'])
+# @jwt_required()
+# def protected():
+#     current_user = get_jwt_identity()
+#     return {'message' : current_user}
 
 @user_master.route('/logout' , methods=['POST'])
 def logout():
