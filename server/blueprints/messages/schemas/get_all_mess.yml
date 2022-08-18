@@ -15,14 +15,9 @@ parameters:
 responses:
   200:
     description: OK
-    # examples:
-    #   application/json:
-    #     {
-    #       "message": "Logged in successfully",
-    #       "id": 1,
-    #       "set_access_cookies": aFG*^GGH%asdwq,
-    #       "set_refresh_cookies": aFG*^GGH%asdwq,
-    #     }
+    examples:
+      application/json: [{"message": "hi guy","message_id": 1,"room_id": 1,"user_id": 1},{"message": "hello nha","message_id": 2,"room_id": 1,"user_id": 2}]
+        
   500:
     description: Internal Server Error
     examples:
