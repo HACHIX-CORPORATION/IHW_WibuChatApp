@@ -6,7 +6,7 @@
         <RoomList
           @addNewRoom="addNewroom"
           :roomheader="roomHeader"
-          :lists="roomLists"
+          :lists="rooms"
           :newroom="newRoom"
         />
       </div>

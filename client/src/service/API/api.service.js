@@ -17,6 +17,17 @@ const ApiService = {
 			console.log(error);
 		}
 	},
+	addNewRoom: async function (newName) {
+		try {
+			console.log('hello', { newName: newName });
+			const response = await axios.post(baseUrl + '/room', {
+				roomName: newName,
+			});
+			return response;
+		} catch (error) {
+			console.log(error);
+		}
+	},
 };
 
 export default ApiService;

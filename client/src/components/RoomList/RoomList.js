@@ -13,18 +13,15 @@ export default {
 	},
 	data() {
 		return {
-			newRoom: '',
+			newRoomName: '',
 		};
 	},
 
 	methods: {
 		addNewRoom() {
 			// alert(typeof this.newRoom);
-			this.$emit('addNewRoom', this.newRoom);
-			this.newRoom = '';
+			this.$emit('addNewRoom', this.newRoomName);
+			this.newRoomName = '';
 		},
-	},
-	mounted() {
-		console.log({ list: this.lists });
 	},
 };
