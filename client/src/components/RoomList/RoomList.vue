@@ -8,13 +8,14 @@
       <div class="roomlist-header">
         {{ roomHeader }}
       </div>
+      <!-- hien tat ca cac room co trong db  -->
       <div
         class="roomlist__container"
-        v-for="(list, index) in lists"
+        v-for="(room, index) in lists"
         :key="index"
       >
         <div class="roomlist--new-added">
-          {{ list }}
+          {{ room.roomName }}
         </div>
       </div>
     </div>

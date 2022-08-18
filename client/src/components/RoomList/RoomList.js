@@ -16,11 +16,15 @@ export default {
 			newRoom: '',
 		};
 	},
+
 	methods: {
 		addNewRoom() {
 			// alert(typeof this.newRoom);
 			this.$emit('addNewRoom', this.newRoom);
 			this.newRoom = '';
 		},
+	},
+	mounted() {
+		console.log({ list: this.lists });
 	},
 };
