@@ -1,0 +1,34 @@
+Create room
+---
+tags:
+  - Room
+parameters:
+  - name: doc_content
+    in: body
+    schema:
+      type: object
+      properties:
+        room_name:
+          type: string
+          example: hello
+responses:
+  200:
+    description: OK
+    examples:
+      application/json:
+        {
+          "message": "Room created"
+          
+        }
+  404:
+    description: Not Found
+    examples:
+      application/json: { "message": "The room already exitis" }
+  500:
+    description: Internal Server Error
+    examples:
+      application/json: { "message": "Create room failed"}
+
+
+
+

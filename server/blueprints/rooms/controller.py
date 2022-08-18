@@ -4,10 +4,10 @@ from app.db import db
 def create_table():
     try:
         data = request.get_json()
-        if RoomModel.find_by_name(data['roomName']):
+        if RoomModel.find_by_name(data['room_name']):
             raise ValueError("The room already exitis")
 
-        room = RoomModel(data['roomName'])
+        room = RoomModel(data['room_name'])
         room.save_to_db()
     except Exception as ex:
         db.session.rollback()

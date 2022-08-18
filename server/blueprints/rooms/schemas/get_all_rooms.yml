@@ -1,0 +1,22 @@
+Get all room
+---
+tags:
+  - Room
+parameters:
+  - name: doc_content
+    in: body
+    schema:
+      type: object
+responses:
+  200:
+    description: OK
+    examples:
+      application/json:  [{"roomID": 1, "roomName" : "Tuan"},{"roomID": 2, "roomName" : "Duy"}]
+  500:
+    description: Internal Server Error
+    examples:
+      application/json: { "message": "Get all room failed"}
+
+
+
+

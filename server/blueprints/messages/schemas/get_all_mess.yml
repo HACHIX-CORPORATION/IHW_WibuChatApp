@@ -1,0 +1,33 @@
+Get mess in room
+---
+tags:
+  - Message
+parameters:
+  - name: doc_content
+    in: body
+    schema:
+      type: object
+      properties:
+        room_id:
+          type: integer
+          example: 1
+        
+responses:
+  200:
+    description: OK
+    # examples:
+    #   application/json:
+    #     {
+    #       "message": "Logged in successfully",
+    #       "id": 1,
+    #       "set_access_cookies": aFG*^GGH%asdwq,
+    #       "set_refresh_cookies": aFG*^GGH%asdwq,
+    #     }
+  500:
+    description: Internal Server Error
+    examples:
+      application/json: { "message": "Get all messages failed"}
+
+
+
+
