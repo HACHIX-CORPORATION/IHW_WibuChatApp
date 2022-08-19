@@ -24,21 +24,33 @@ export default {
 		onSignout() {
 			this.$router.push({ name: 'Home' });
 		},
+		// khi resolve thì sẽ auto add room mới tạo vào DB cho dù rỗng hay không
 		async addNewroom(newName) {
 			try {
-				await ApiService.addNewRoom(newName);
-				// console.log('day la' , response );
-				if (this.newRoom != newName) {
-					// push vao 1 object co key la roomName
-					this.rooms.push({ roomName: newName });
+				if (newName == '') {
+					alert('Room name can not be empty');
+				} else {
+					if (
+						this.rooms.filter((room) => room.roomName === newName)
+							.length > 0
+					) {
+						console.log('da ton tai phong');
+						alert('This room already existed !!!');
+					} else {
+						let response = await ApiService.addNewRoom(newName);
+						console.log('response:', { reponse: response });
+						if (response.status === 200) {
+							this.rooms.push({ roomName: newName });
+							console.log({ asfasfs: this.rooms });
+						} else console.log('Them phong khong thanh cong');
+					}
 				}
-				// console.log('day la response data' + response.data);
-				console.log(`New room "${newName}" created`);
+				// assign response to POST request
 			} catch (error) {
-				// kiem tra phong da ton tai hay chua
-				if (error.response.status === 400) {
+				// when async caught every error (with status: 404 or 500)
+				if (newName == '') {
 					console.log(error);
-					alert('This room already existed !');
+					alert('Room name cannot be emtpy');
 				}
 			}
 		},
@@ -47,7 +59,6 @@ export default {
 	async created() {
 		try {
 			let rooms = await ApiService.getAllRoom();
-			// log ra dang object
 			this.rooms = rooms;
 		} catch (error) {
 			console.log('hello' + error);

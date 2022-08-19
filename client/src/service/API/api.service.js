@@ -9,6 +9,12 @@ axios.defaults.headers = {
 };
 
 const ApiService = {
+	addNewRoom: function (newName) {
+		// POST request always return response, here is "axios.post..."
+		return axios.post(baseUrl + '/room', {
+			roomName: newName,
+		});
+	},
 	getAllRoom: async function () {
 		try {
 			const response = await axios.get(baseUrl + '/rooms');
@@ -17,17 +23,5 @@ const ApiService = {
 			console.log(error);
 		}
 	},
-	addNewRoom: async function (newName) {
-		try {
-			console.log('hello', { newName: newName });
-			const response = await axios.post(baseUrl + '/room', {
-				roomName: newName,
-			});
-			return response;
-		} catch (error) {
-			console.log(error);
-		}
-	},
 };
-
 export default ApiService;
