@@ -4,10 +4,13 @@ from blueprints.users import controller as user_ctrl
 from app.db import db
 from http import HTTPStatus
 
-user_master: Blueprint = Blueprint('user_master', __name__)
+user: Blueprint = Blueprint('user', __name__ , url_prefix='/api/user')
 
-@user_master.route('/register' , methods=['POST'])
+@user.route('/register' , methods=['POST'])
 def register():
+    """
+    file: ./schemas/user_register.yml
+    """
     try :
         user_ctrl.register_user()
         content = {
@@ -33,8 +36,11 @@ def register():
     return jsonify(content),status
 
 
-@user_master.route('/login' , methods = ['POST'])
+@user.route('/login' , methods = ['POST'])
 def login():
+    """
+    file: ./schemas/user_login.yml
+    """
     try:
         result = user_ctrl.login()
         status = HTTPStatus.OK
@@ -54,15 +60,14 @@ def login():
     return jsonify(content),status
     
 
-@user_master.route('/<user_id>', methods=['GET'])
-# @jwt_required()
+@user.route('/<user_id>', methods=['GET'])
 def get_user_ID(user_id):
     user_id = int(user_id)
     user = user_ctrl.get_user_by_id(user_id)
     return user
 
-@user_master.route('/all', methods=['GET'])
-def getall():
+@user.route('/', methods=['GET'])
+def get_all_users():
     result = user_ctrl.get_all_users()
     return result
 
@@ -72,7 +77,7 @@ def getall():
 #     current_user = get_jwt_identity()
 #     return {'message' : current_user}
 
-@user_master.route('/logout' , methods=['POST'])
+@user.route('/logout' , methods=['POST'])
 def logout():
     resp = jsonify({'message' : 'logout success'})
     unset_jwt_cookies(resp)

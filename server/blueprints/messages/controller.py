@@ -1,7 +1,7 @@
 from blueprints.messages.models import MessageModel
 
-def get_mess_by_roomID(roomID:int):
-    messes = MessageModel.get_mess_by_roomID(roomID)
+def get_mess_by_roomID(room_id:int):
+    messes = MessageModel.get_mess_by_room_id(room_id)
     result = []
 
     for mess in messes:

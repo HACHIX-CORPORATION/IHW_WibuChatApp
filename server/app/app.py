@@ -2,20 +2,22 @@ from socket import socket
 from flask import Flask, redirect, render_template, request, session
 from flask_jwt_extended import JWTManager, get_jwt_identity, jwt_required
 from flask_restful import Api
-from blueprints.users.route import user_master
-from blueprints.rooms.router import room_master
-from blueprints.messages.route import message_master
+from blueprints.users.route import user
+from blueprints.rooms.router import room
+from blueprints.messages.route import message
 from flask_cors import CORS
 from flask_socketio import SocketIO, send, join_room, leave_room, emit
 from blueprints.messages.models import MessageModel
 from blueprints.users.models import UserModel
 from blueprints.rooms.models import RoomModel
 import time
-
+from flasgger import Swagger
 
 # app = Flask(__name__, template_folder='templates')
 app = Flask(__name__, instance_relative_config=True,
             template_folder='../../client/dist')
+
+swagger = Swagger(app)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.sqlite'
@@ -38,9 +40,9 @@ app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
 jwt = JWTManager(app)
 
-app.register_blueprint(user_master)
-app.register_blueprint(room_master)
-app.register_blueprint(message_master)
+app.register_blueprint(user)
+app.register_blueprint(room)
+app.register_blueprint(message)
 
 
 # @socketio.on('message')
@@ -65,7 +67,7 @@ def chat_room(data):
     roomDB = RoomModel.find_by_name(room)
     user = UserModel.find_by_id(userID)
     if roomDB and user:
-        message = MessageModel(roomID=roomDB.roomID, userID=user.id, message=mess)
+        message = MessageModel(room_id=roomDB.room_id, user_id=user.user_id, message=mess)
         message.save_to_db()
         emit("msg_room", user.username + " : " + mess, room=room)
     else :

@@ -1,0 +1,39 @@
+Log in the system
+---
+tags:
+  - User
+parameters:
+  - name: doc_content
+    in: body
+    schema:
+      type: object
+      properties:
+        username:
+          type: string
+          example: tuan
+        password:
+          type: string
+          example: admin
+responses:
+  200:
+    description: OK
+    examples:
+      application/json:
+        {
+          "message": "Logged in successfully",
+          "id": 1,
+          "set_access_cookies": aFG*^GGH%asdwq,
+          "set_refresh_cookies": aFG*^GGH%asdwq,
+        }
+  404:
+    description: Not Found
+    examples:
+      application/json: { "message": "The user not found" }
+  500:
+    description: Internal Server Error
+    examples:
+      application/json: { "message": "Login user failed"}
+
+
+
+

@@ -4,10 +4,10 @@ from app.db import db
 
 class UserModel(db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(256), nullable=False)
     password = db.Column(db.String(256), nullable=False)
-    rePassword = db.Column(db.String(256), nullable=False)
+    re_password = db.Column(db.String(256), nullable=False)
     telephone = db.Column(db.String(256), nullable=False)
     mail = db.Column(db.String(256), nullable=False)
     date = db.Column(db.String(256), nullable=False)
@@ -22,10 +22,10 @@ class UserModel(db.Model):
             setattr(self,key,value)
 
     def convert_json(self):
-        inf_list = ['id', 'username', 'password', 'rePassword',
+        inf_list = ['user_id', 'username', 'password', 'rePassword',
                     'telephone', 'mail', 'date', 'avatar']
-        inf_list_DETAIL = [self.id, self.username, self.password,
-                           self.rePassword, self.telephone, self.mail, self.date, self.avatar]
+        inf_list_DETAIL = [self.user_id, self.username, self.password,
+                           self.re_password, self.telephone, self.mail, self.date, self.avatar]
         user_infor = {}
         for index, key in enumerate(inf_list):
             user_infor[key] = inf_list_DETAIL[index]
@@ -45,8 +45,8 @@ class UserModel(db.Model):
         db.session.commit()
 
     @classmethod
-    def find_by_id(cls, id):
-        return cls.query.filter_by(id=id).first()
+    def find_by_id(cls, user_id):
+        return cls.query.filter_by(user_id=user_id).first()
 
     @classmethod
     def find_by_name(cls, username):
