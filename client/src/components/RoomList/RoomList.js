@@ -7,6 +7,7 @@ export default {
         lists: {
             type: Array,
         },
+        //
     },
     data() {
         return {
