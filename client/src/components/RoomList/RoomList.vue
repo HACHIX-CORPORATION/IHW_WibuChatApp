@@ -16,7 +16,7 @@
 				:key="index"
 			>
 				<div class="roomlist--new-added">
-					{{ room.roomName }}
+					{{ room.room_name }}
 				</div>
 			</div>
 		</div>
