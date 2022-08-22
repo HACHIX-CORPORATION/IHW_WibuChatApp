@@ -2,13 +2,16 @@ from http import HTTPStatus
 from flask import Blueprint,jsonify
 from blueprints.messages import controller as mess_ctrl
 
-message_master: Blueprint = Blueprint('message_master', __name__)
+message: Blueprint = Blueprint('message', __name__ , url_prefix='/api/mess')
 
-@message_master.route('/mess/<roomID>', methods = ['GET'])
-def get_mess_in_room(roomID):
+@message.route('/<room_id>', methods = ['GET'])
+def get_mess_in_room(room_id):
+    """
+    file: ./schemas/get_all_mess.yml
+    """
     try:
-        roomID = int(roomID)
-        mess = mess_ctrl.get_mess_by_roomID(roomID)
+        room_id = int(room_id)
+        mess = mess_ctrl.get_mess_by_roomID(room_id)
         status = HTTPStatus.OK
         return mess,status
     except Exception:

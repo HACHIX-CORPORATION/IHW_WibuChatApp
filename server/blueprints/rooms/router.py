@@ -1,14 +1,15 @@
-
 from http import HTTPStatus
 from flask import Blueprint,jsonify,render_template ,request
 from flask_jwt_extended import jwt_required
 from blueprints.rooms import controller as room_ctrl
 
-room_master: Blueprint = Blueprint('room_master',__name__)
+room: Blueprint = Blueprint('room',__name__ , url_prefix='/api/room')
 
-@room_master.route('/room' , methods = ['POST'] )
-# @jwt_required()
+@room.route('/' , methods = ['POST'] )
 def create_room():
+    """
+    file: ./schemas/create_room.yml
+    """
     try:
         room_ctrl.create_table()
         content = {
@@ -29,8 +30,11 @@ def create_room():
         status = HTTPStatus.INTERNAL_SERVER_ERROR
     return jsonify(content),status
 
-@room_master.route('/rooms' , methods = ['GET'])
+@room.route('/' , methods = ['GET'])
 def get_all_rooms():
+    """
+    file: ./schemas/get_all_rooms.yml
+    """
     try :
         rooms = room_ctrl.get_all_rooms()
         status = HTTPStatus.OK
