@@ -1,12 +1,10 @@
 <template>
-  <div class="Chatlobby">
-    <SideBar />
-    <BoxChat />
-  </div>
+	<div class="Chatlobby">
+		<SideBar />
+		<BoxChat />
+	</div>
 </template>
 
-<script src="./ChatLobby.js">
-</script>
+<script src="./ChatLobby.js"></script>
 
-<style src="./ChatLobby.css">
-</style>
+<style src="./ChatLobby.css"></style>
