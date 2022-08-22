@@ -14,7 +14,7 @@ import time
 from flasgger import Swagger
 
 # app = Flask(__name__, template_folder='templates')
-app = Flask(__name__, instance_relative_config=True,
+app = Flask(__name__, instance_relative_config=True,static_folder='../../client/dist/static',
             template_folder='../../client/dist')
 
 swagger = Swagger(app)
