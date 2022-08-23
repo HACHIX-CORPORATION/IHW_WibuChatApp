@@ -1,5 +1,6 @@
 import RoomList from '../RoomList/RoomList.vue';
 import ApiService from '@/service/API/api.service';
+import socketClient from '@/service/Socket';
 
 export default {
 	name: 'SideBar',
@@ -13,9 +14,10 @@ export default {
 		};
 	},
 	methods: {
-		onSignout() { 
+		onSignout() {
 			// delete data when logout
 			localStorage.removeItem('userId');
+			socketClient.removeOn('join');
 			this.$router.push({ name: 'Home' });
 		},
 		// khi resolve thì sẽ auto add room mới tạo vào DB cho dù rỗng hay không

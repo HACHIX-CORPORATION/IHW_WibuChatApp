@@ -1,7 +1,11 @@
 <template>
 	<div class="rooms__section">
 		<div class="rooms" action="">
-			<input type="text" placeholder="add new ..." v-model="newRoomName" />
+			<input
+				type="text"
+				placeholder="add new ..."
+				v-model="newRoomName"
+			/>
 			<button @click="addNewRoom">Add</button>
 		</div>
 		<div class="roomlist">

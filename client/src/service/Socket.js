@@ -17,9 +17,11 @@ const socketClient = {
 	// client receive event
 	on: function (event, callback) {
 		socketClient.io.on(event, callback);
-		console.log({ socketReceiveEvent: event, callback });
+		console.log({ socketReceiveEvent: event });
+	},
+	removeOn: function (event, callback) {
+		socketClient.io.off(event, callback);
 	},
 };
-
 
 export default socketClient;
