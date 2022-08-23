@@ -16,7 +16,7 @@
 				</div>
 			</div>
 			<div class="boxchat__input">
-				<form @submit.prevent="send" class="boxchat__input--layout">
+				<form @submit.prevent="sendMess" class="boxchat__input--layout">
 					<input type="text" placeholder=" Aa" v-model="newText" />
 					<button>
 						<div class="svg-wrapper-1">
