@@ -1,11 +1,7 @@
 <template>
 	<div class="rooms__section">
 		<div class="rooms" action="">
-			<input
-				type="text"
-				placeholder="add new ..."
-				v-model="newRoomName"
-			/>
+			<input type="text" placeholder="add new ..." v-model="newRoomName" />
 			<button @click="addNewRoom">Add</button>
 		</div>
 		<div class="roomlist">
@@ -15,7 +11,7 @@
 				v-for="(room, index) in lists"
 				:key="index"
 			>
-				<div class="roomlist--new-added">
+				<div class="roomlist--new-added" @click="onJoin(room)">
 					{{ room.room_name }}
 				</div>
 			</div>

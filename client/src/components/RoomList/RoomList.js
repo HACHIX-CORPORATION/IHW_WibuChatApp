@@ -1,3 +1,5 @@
+import socketClient from '../../service/Socket';
+
 export default {
 	name: 'RoomLists',
 	props: {
@@ -7,7 +9,6 @@ export default {
 		lists: {
 			type: Array,
 		},
-		//
 	},
 	data() {
 		return {
@@ -21,5 +22,18 @@ export default {
 			this.$emit('addNewRoom', this.newRoomName);
 			this.newRoomName = '';
 		},
+		onJoin(room) {
+			// get data from local storage to use
+			let userId = localStorage.getItem('userId');
+			socketClient.emit('join', {
+				room: room.room_name,
+				userID: userId,
+			});
+		},
+	},
+	mounted() {
+		socketClient.on('msg_room', function (data) {
+			console.log({ thongbao: data });
+		});
 	},
 };
