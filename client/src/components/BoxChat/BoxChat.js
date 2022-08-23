@@ -16,4 +16,9 @@ export default {
 			} else this.newText = '';
 		},
 	},
+	created (){
+    this.emitter.on('on-transfer-room-name', (roomName) => {
+      console.log({roomName: roomName});
+    })
+  }
 };

@@ -25,6 +25,7 @@ export default {
 		onJoin(room) {
 			// get data from local storage to use
 			let userId = localStorage.getItem('userId');
+			this.emitter.emit('on-transfer-room-name',  room.room_name)
 			socketClient.emit('join', {
 				room: room.room_name,
 				userID: userId,
