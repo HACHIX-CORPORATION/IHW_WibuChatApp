@@ -30,8 +30,8 @@ def on_message(data):
             'room_name' : room_db.room_name,
             'mess' : mess
         }
-        json_string = json.dumps(content,ensure_ascii=False).encode('utf8')
-        emit("receive_message", json_string.decode(), room=room_name)
+        json_string = json.dumps(content)
+        emit("receive_message", json_string , room=room_name)
         print("Message is : {}".format(str(mess)))
         
     else :

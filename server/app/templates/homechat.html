@@ -34,11 +34,11 @@
             })
 
             socket.on('receive_message',function(msg) {
-		        $("#group_messages").append('<li>'+msg+'</li>');
                 console.log(typeof(msg),msg)
                 let messObj = JSON.parse(msg)
                 console.log(typeof(messObj),messObj)
-
+                
+		        $("#group_messages").append('<li>'+ messObj.mess +'</li>');
 	        });
             
             $('form#join').submit(function(event) {
