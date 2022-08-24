@@ -30,10 +30,10 @@
             });
 
             $('#sendGroup').on('click' , function (){
-                socket.emit('message' , {'room_name' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'user_id' : $('#user_id').val()})
+                socket.emit('send_message' , {'room_name' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'user_id' : $('#user_id').val()})
             })
 
-            socket.on('new_message',function(msg) {
+            socket.on('receive_message',function(msg) {
 		        $("#group_messages").append('<li>'+msg+'</li>');
                 console.log(typeof(msg),msg)
                 let messObj = JSON.parse(msg)
