@@ -9,6 +9,8 @@ def create_table():
 
         room = RoomModel(data['room_name'])
         room.save_to_db()
+        return room.room_id
+
     except Exception as ex:
         db.session.rollback()
         raise ex
