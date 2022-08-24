@@ -28,8 +28,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS-'] = False
 CORS(app, resource={r"/*": {"origins": "*"}}, allow_headers=[
     "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "cache-control", "Pragma", "Expires","Access-Control-Allow-Credentials"], supports_credentials= True)
 
-socketio = SocketIO(app, cors_allowed_origins='*')
-
 api = Api(app)
 
 app.config['SECRET_KEY'] = "12345678"
@@ -43,53 +41,6 @@ jwt = JWTManager(app)
 app.register_blueprint(user)
 app.register_blueprint(room)
 app.register_blueprint(message)
-
-
-# @socketio.on('message')
-# @jwt_required()
-# def handle_message(data):
-#     data1 = get_jwt_identity()
-#     print('recevied message : ' + data)
-#     user = UserModel.find_by_name(data1)
-#     time_stamp = time.strftime('%b-%d %I:%M%p', time.localtime())
-
-#     if user:
-#         message = MessageModel(roomID=1, userID=user.id, message=data)
-#         message.save_to_db()
-#         send(data1 + ' : ' + data + '(time :  ' + time_stamp + ' )', broadcast=True)
-
-
-@socketio.on('chat_room')
-def chat_room(data):
-    mess = data['mess']
-    room = data['room']
-    userID = data['userID']
-    roomDB = RoomModel.find_by_name(room)
-    user = UserModel.find_by_id(userID)
-    if roomDB and user:
-        message = MessageModel(room_id=roomDB.room_id, user_id=user.user_id, message=mess)
-        message.save_to_db()
-        emit("msg_room", user.username + " : " + mess, room=room)
-    else :
-        send('failed message')
-
-
-@socketio.on('join')
-def on_join(data):
-    room = data['room']
-    userID = data['userID']
-    join_room(room)
-    roomDB = RoomModel.find_by_name(room)
-    user = UserModel.find_by_id(userID)
-    if roomDB and user:
-        emit("msg_room", user.username + " has joined the " + room + " room.", room=room)
-    else:
-        send('Not found room')
-
-
-@socketio.on('disconnect')
-def test_disconnect():
-    print('[DISCONNECTED] ' + request.sid)
 
 
 @app.route("/", defaults={"path": ""})
