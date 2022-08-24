@@ -11,11 +11,13 @@ def create_room():
     file: ./schemas/create_room.yml
     """
     try:
-        room_ctrl.create_table()
+        result = room_ctrl.create_table()
         content = {
-            'message' : 'Room created'
+            'message' : 'Room created',
+            'room_id' : result
         }
         status = HTTPStatus.OK
+        
 
     except ValueError as ex :
         content = {
