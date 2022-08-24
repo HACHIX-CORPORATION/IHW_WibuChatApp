@@ -22,16 +22,15 @@
 
             socket.on('new_join', function (msg) {
                 $("#messages").append('<li>' + msg + '</li>');
-                console.log('Received message');
             });
-          
+
             $('#sendbutton').on('click', function () {
                 socket.send($('#myMessage').val());
                 $('#myMessage').val();
             });
 
             $('#sendGroup').on('click' , function (){
-                socket.emit('message' , {'room' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'user_id' : $('#user_id').val()})
+                socket.emit('message' , {'room_name' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'user_id' : $('#user_id').val()})
             })
 
             socket.on('new_message',function(msg) {
@@ -40,7 +39,7 @@
 	        });
             
             $('form#join').submit(function(event) {
-                socket.emit('join', {room: $('#join_room').val() , user_id : $('#user_id').val()});
+                socket.emit('join', {room_name: $('#join_room').val() , user_id : $('#user_id').val()});
                 return false;
             });       
         });
