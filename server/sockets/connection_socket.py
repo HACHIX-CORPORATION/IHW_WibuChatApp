@@ -8,7 +8,7 @@ import json
 
 socketio = SocketIO(app, cors_allowed_origins='*')
 
-@socketio.on('message')
+@socketio.on('send_message')
 def on_message(data):
     mess = data['mess']
     room_name = data['room_name']
@@ -29,7 +29,7 @@ def on_message(data):
             'mess' : mess
         }
         json_string = json.dumps(content)
-        emit("new_message", json_string, room=room_name)
+        emit("receive_message", json_string, room=room_name)
         print("Message is : {}".format(str(mess)))
         
     else :
