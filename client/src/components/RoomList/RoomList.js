@@ -13,6 +13,7 @@ export default {
 	data() {
 		return {
 			newRoomName: '',
+			selectedRoomId: '',
 		};
 	},
 
@@ -23,17 +24,30 @@ export default {
 			this.newRoomName = '';
 		},
 		onJoin(room) {
+			/*
+			room = {
+				room_name: String,
+				room_id: Number
+			} 
+			*/
+
 			// get data from local storage to use
 			let userId = localStorage.getItem('userId');
-			this.emitter.emit('on-transfer-room-name', room.room_name);
+			// send event, param to BoxChat.js
+			this.emitter.emit('on-transfer-room-data', {
+				currentRoomName: room.room_name,
+				currentRoomId: room.room_id,
+			});
+			console.log(room);
+			this.selectedRoomId = room.room_id;
 			socketClient.emit('join', {
-				room: room.room_name,
-				userID: userId,
+				room_name: room.room_name,
+				user_id: userId,
 			});
 		},
 	},
-	mounted() {
-		socketClient.on('msg_room', function (data) {
+	created() {
+		socketClient.on('new_message', function (data) {
 			console.log({ thongbao: data });
 		});
 	},

@@ -17,5 +17,8 @@ const ApiService = {
 	getAllRoom: function () {
 		return axios.get(baseUrl + '/api/room/');
 	},
+	getMessageOfRoom: function (roomId) {
+		return axios.get(baseUrl + '/api/mess/' + '?room_id=' + roomId);
+	},
 };
 export default ApiService;

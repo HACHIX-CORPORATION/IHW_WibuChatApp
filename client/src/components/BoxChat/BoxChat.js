@@ -1,3 +1,4 @@
+import ApiService from '@/service/API/api.service';
 import socketClient from '@/service/Socket';
 
 export default {
@@ -6,34 +7,71 @@ export default {
 		return {
 			appName: 'Wichat',
 			newText: '',
-			messengerList: [],
+
+			/**
+			 * Array of object message
+			 * [
+			 * 		{ mess: String, userId: Integer, userName: String  }
+			 * ]
+			 */
+			messages: [
+				{
+					mess: 'hello client B',
+					userId: 1,
+					userName: 'A',
+				},
+				{
+					mess: 'hello client A',
+					userId: 2,
+					userName: 'B',
+				},
+			],
 			roomName: '',
+			roomId: '',
+			isSender: true,
+			userId: '',
 		};
 	},
 	methods: {
 		sendMess() {
-			let userId = localStorage.getItem('userId');
-			socketClient.emit('chat_room', {
+			let userId = parseInt(localStorage.getItem('userId'));
+			console.log('local data: ', { userId });
+			socketClient.emit('message', {
 				mess: this.newText,
-				room: this.roomName,
-				userID: userId,
+				room_name: this.roomName,
+				user_id: userId,
 			});
+
+			// if ((userId = user_id))
 			console.log({
 				mess: this.newText,
-				room: this.roomName,
-				userID: userId,
+				room_name: this.roomName,
+				user_id: userId,
 			});
 			// check noi dung co phai la empty hay khong thi moi push
 			if (this.newText != '') {
-				this.messengerList.push(this.newText);
+				this.messages.push({ mess: this.newText, userId: userId });
 				this.newText = '';
 			} else this.newText = '';
 		},
 	},
-	created() {
-		this.emitter.on('on-transfer-room-name', (currentRoomName) => {
-			console.log('Room: ', { roomName: currentRoomName }, ' joined');
-			this.roomName = currentRoomName;
+	async created() {
+		this.userId = parseInt(localStorage.getItem('userId'));
+		console.log({ userId: this.userId });
+		// receive event, param from RoomList.js
+		this.emitter.on('on-transfer-room-data', async (roomData) => {
+			this.roomName = roomData.currentRoomName;
+			this.roomId = roomData.currentRoomId;
+			try {
+				let response = await ApiService.getMessageOfRoom(this.roomId);
+				console.log({ responseeee: response });
+			} catch (error) {
+				console.log('Error roi ne: ', { error });
+			}
+		});
+		socketClient.on('new_message', (content) => {
+			console.log('From server: ', { content });
+			console.log({ list: this.messages });
 		});
 	},
 };

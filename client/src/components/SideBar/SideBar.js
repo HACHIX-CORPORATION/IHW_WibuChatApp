@@ -29,7 +29,6 @@ export default {
 					this.rooms.filter((room) => room.room_name === newName)
 						.length > 0
 				) {
-					// console.log('da ton tai phong');
 					alert('This room already existed !!!');
 				} else {
 					try {
@@ -37,7 +36,7 @@ export default {
 						let response = await ApiService.addNewRoom(newName);
 						console.log('response:', { reponse: response });
 						if (response.status === 200) {
-							this.rooms.push({ room_name: newName });
+							this.rooms.push({ room_name: newName,  });
 							console.log({ asfasfs: this.rooms });
 						} else console.log('Them phong khong thanh cong');
 					} catch (error) {
@@ -50,8 +49,9 @@ export default {
 	// GET all room and show in the screen
 	async created() {
 		try {
-			let rooms = (await ApiService.getAllRoom()).data;
-			this.rooms = rooms;
+			let response = await ApiService.getAllRoom();
+			console.log({ allRoom: response.data });
+			this.rooms = response.data;
 		} catch (error) {
 			console.log({
 				Error: error,

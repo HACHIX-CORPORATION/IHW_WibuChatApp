@@ -3,15 +3,22 @@
 		<div class="boxchat__container">
 			<div class="boxchat__header">Wichat</div>
 			<div class="boxchat__screen">
-				<div class="receiveMessenger"></div>
-				<div class="sendMessenger">
+				<div class="message">
 					<div
-						class="messenger__container"
-						v-for="(messenger, idx) in messengerList"
+						class="message__container"
+						v-for="(message, idx) in messages"
 						:key="idx"
 					>
-						<img src="../../assets/02.jpg" alt="" />
-						<div class="messenger__text">{{ messenger }}</div>
+						<div
+							class="message__box"
+							:class="{
+								'message--sender': message.userId === userId,
+								'message--receiver': message.userId !== userId,
+							}"
+						>
+							<div class="message__text">{{ message }}</div>
+							<img src="../../assets/02.jpg" alt="" />
+						</div>
 					</div>
 				</div>
 			</div>
