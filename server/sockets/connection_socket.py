@@ -2,8 +2,9 @@ from blueprints.messages.models import MessageModel
 from blueprints.rooms.models import RoomModel
 from blueprints.users.models import UserModel
 from flask_socketio import send,emit,join_room,SocketIO
-from flask import request
+from flask import request,jsonify
 from app.app import app
+import json
 
 socketio = SocketIO(app, cors_allowed_origins='*')
 
@@ -20,8 +21,17 @@ def on_message(data):
     elif room_db and user:
         message = MessageModel(room_id=room_db.room_id, user_id=user.user_id, message=mess)
         message.save_to_db()
-        emit("new_message", mess , room=room_name)
+        content = {
+            'user_id' : user.user_id ,
+            'user_name' : user.username,
+            'room_id' : room_db.room_id,
+            'room_name' : room_db.room_name,
+            'mess' : mess
+        }
+        json_string = json.dumps(content)
+        emit("new_message", json_string, room=room_name)
         print("Message is : {}".format(str(mess)))
+        
     else :
         print('failed message')
         send('failed message')

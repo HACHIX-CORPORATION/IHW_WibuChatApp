@@ -35,7 +35,10 @@
 
             socket.on('new_message',function(msg) {
 		        $("#group_messages").append('<li>'+msg+'</li>');
-                
+                console.log(typeof(msg),msg)
+                let messObj = JSON.parse(msg)
+                console.log(typeof(messObj),messObj)
+
 	        });
             
             $('form#join').submit(function(event) {
