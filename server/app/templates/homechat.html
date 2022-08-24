@@ -20,27 +20,29 @@
                 socket.send('User has connected!');
             });
 
-            socket.on('message', function (msg) {
+            socket.on('new_join', function (msg) {
                 $("#messages").append('<li>' + msg + '</li>');
-                console.log('Received message');
             });
-          
+
             $('#sendbutton').on('click', function () {
                 socket.send($('#myMessage').val());
                 $('#myMessage').val();
             });
 
             $('#sendGroup').on('click' , function (){
-                socket.emit('chat_room' , {'room' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'userID' : $('#userID').val()})
+                socket.emit('message' , {'room_name' : $('#join_room').val() , 'mess' : $('#group_message').val() , 'user_id' : $('#user_id').val()})
             })
 
-            socket.on('msg_room',function(msg) {
+            socket.on('new_message',function(msg) {
 		        $("#group_messages").append('<li>'+msg+'</li>');
-                
+                console.log(typeof(msg),msg)
+                let messObj = JSON.parse(msg)
+                console.log(typeof(messObj),messObj)
+
 	        });
             
             $('form#join').submit(function(event) {
-                socket.emit('join', {room: $('#join_room').val() , userID : $('#userID').val()});
+                socket.emit('join', {room_name: $('#join_room').val() , user_id : $('#user_id').val()});
                 return false;
             });       
         });
@@ -68,7 +70,7 @@
 
             <form id="join" method="POST" action='#'>
                 <input type="text" name="join_room" id="join_room" placeholder="Room Name">
-                <input type="text" name="userID" id="userID" placeholder="User ID">
+                <input type="text" name="user_id" id="user_id" placeholder="user_id">
                 <input type="submit" value="Join Room">
             </form>
 
