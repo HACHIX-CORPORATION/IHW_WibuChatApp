@@ -50,7 +50,7 @@ export default {
 	async created() {
 		try {
 			let response = await ApiService.getAllRoom();
-			console.log({ allRoom: response.data });
+			// console.log({ allRoom: response.data });
 			this.rooms = response.data;
 		} catch (error) {
 			console.log({

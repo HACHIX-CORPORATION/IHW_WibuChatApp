@@ -15,16 +15,16 @@ export default {
 			 * ]
 			 */
 			messages: [
-				{
-					mess: 'hello client B',
-					userId: 1,
-					userName: 'A',
-				},
-				{
-					mess: 'hello client A',
-					userId: 2,
-					userName: 'B',
-				},
+				// {
+				// 	mess: 'hello client B',
+				// 	userId: 1,
+				// 	userName: 'A',
+				// },
+				// {
+				// 	mess: 'hello client A',
+				// 	userId: 2,
+				// 	userName: 'B',
+				// },
 			],
 			roomName: '',
 			roomId: '',
@@ -36,7 +36,8 @@ export default {
 		sendMess() {
 			let userId = parseInt(localStorage.getItem('userId'));
 			console.log('local data: ', { userId });
-			socketClient.emit('message', {
+
+			socketClient.emit('send_message', {
 				mess: this.newText,
 				room_name: this.roomName,
 				user_id: userId,
@@ -48,18 +49,23 @@ export default {
 				room_name: this.roomName,
 				user_id: userId,
 			});
+
 			// check noi dung co phai la empty hay khong thi moi push
 			if (this.newText != '') {
 				this.messages.push({ mess: this.newText, userId: userId });
+				console.log('list messages', this.messages);
 				this.newText = '';
 			} else this.newText = '';
 		},
 	},
+
 	async created() {
 		this.userId = parseInt(localStorage.getItem('userId'));
-		console.log({ userId: this.userId });
+		console.log('userid', { userId: this.userId });
+
 		// receive event, param from RoomList.js
 		this.emitter.on('on-transfer-room-data', async (roomData) => {
+			console.log('roomData', roomData);
 			this.roomName = roomData.currentRoomName;
 			this.roomId = roomData.currentRoomId;
 			try {
@@ -69,9 +75,10 @@ export default {
 				console.log('Error roi ne: ', { error });
 			}
 		});
-		socketClient.on('new_message', (content) => {
-			console.log('From server: ', { content });
-			console.log({ list: this.messages });
+		// console.log(socketClient);
+		socketClient.on('receive_message', (content) => {
+			this.messages.push(JSON.parse(content).mess);
+			console.log('nhan messages:', this.messages);
 		});
 	},
 };

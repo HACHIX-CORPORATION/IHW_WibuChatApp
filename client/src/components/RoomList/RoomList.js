@@ -46,8 +46,9 @@ export default {
 			});
 		},
 	},
+
 	created() {
-		socketClient.on('new_message', function (data) {
+		socketClient.on('new_message', (data) => {
 			console.log({ thongbao: data });
 		});
 	},
