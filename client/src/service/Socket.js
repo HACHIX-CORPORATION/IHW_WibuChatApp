@@ -11,14 +11,14 @@ const socketClient = {
 	// client send event
 	emit: function (event, data) {
 		// const baseURL = process.env.VUE_APP_BASE_URL;
-		console.log({ socketSendEvent: event, data });
+		// console.log({ socketSendEvent: event, data });
 		socketClient.io.emit(event, data);
 	},
-	
+
 	// client receive event
 	on: function (event, callback) {
 		socketClient.io.on(event, callback);
-		console.log('content:', { socketReceiveEvent: event });
+		// console.log('content:', { socketReceiveEvent: event });
 	},
 
 	removeOn: function (event, callback) {

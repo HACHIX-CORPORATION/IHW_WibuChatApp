@@ -60,28 +60,43 @@ export default {
 				this.newText = '';
 			} else this.newText = '';
 		},
+
+		listener(...content) {
+			console.log('content:', content);
+			console.log('content2');
+			this.messages.push(JSON.parse(content));
+		},
 	},
 
 	async created() {
 		this.userId = parseInt(localStorage.getItem('userId'));
 		console.log('userid', { userId: this.userId });
-
 		// receive event, param from RoomList.js
 		this.emitter.on('on-transfer-room-data', async (roomData) => {
-			console.log('roomData', roomData);
+			// console.log('roomData', roomData);
+
 			this.roomName = roomData.currentRoomName;
 			this.roomId = roomData.currentRoomId;
 			try {
 				let response = await ApiService.getMessageOfRoom(this.roomId);
-				console.log({ responseeee: response });
+				console.log('Response:', response);
 			} catch (error) {
-				console.log('Error roi ne: ', { error });
+				console.log('Error roi ne: ', error);
 			}
 		});
 		// console.log(socketClient);
-		socketClient.on('receive_message', (content) => {
-			this.messages.push(JSON.parse(content));
-			console.log('nhan messages:', this.messages);
-		});
+		socketClient.on(
+			'receive_message',
+			this.listener
+			// console.log('nhan messages:', this.messages);
+		);
+	},
+
+	unmounted() {
+		socketClient.removeOn(
+			'receive_message',
+			this.listener
+			// console.log('sdfafas');
+		);
 	},
 };
