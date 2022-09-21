@@ -48,10 +48,19 @@ input {
 }
 
 .boxchat__screen {
-	/* display: grid;
-	grid-template-columns: repeat(2, 1fr); */
-	/* height: calc(100% - 140px); */
+	overflow-y: scroll;
 	flex: 1;
+}
+::-webkit-scrollbar {
+	width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 6px 5px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #636363;
 }
 
 .message {
@@ -69,12 +78,14 @@ input {
 	float: right;
 	padding: 10px;
 	display: flex;
+	align-items: center;
 }
 .message--receiver {
 	background-color: #bbbbbb;
 	border-radius: 15px 15px 15px 0;
 	padding: 10px;
 	display: flex;
+	align-items: center;
 }
 .message__container {
 	width: 100%;
@@ -95,7 +106,7 @@ input {
 
 .message__text {
 	display: block;
-	font-size: 15px;
+	font-size: 20px;
 }
 button {
 	height: 40px;

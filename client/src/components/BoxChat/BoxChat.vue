@@ -17,7 +17,7 @@
 							}"
 						>
 							<div class="message__text">{{ message.mess }}</div>
-							<img src="../../assets/02.jpg" alt="" />
+							<img src="../../assets/hanezawa.jpg" alt="" />
 						</div>
 					</div>
 				</div>

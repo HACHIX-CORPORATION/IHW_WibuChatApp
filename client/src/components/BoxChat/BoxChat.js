@@ -52,7 +52,10 @@ export default {
 
 			// check noi dung co phai la empty hay khong thi moi push
 			if (this.newText != '') {
-				this.messages.push({ mess: this.newText, userId: userId });
+				this.messages.push({
+					mess: this.newText,
+					userId: userId,
+				});
 				console.log('list messages', this.messages);
 				this.newText = '';
 			} else this.newText = '';
@@ -77,7 +80,7 @@ export default {
 		});
 		// console.log(socketClient);
 		socketClient.on('receive_message', (content) => {
-			this.messages.push(JSON.parse(content).mess);
+			this.messages.push(JSON.parse(content));
 			console.log('nhan messages:', this.messages);
 		});
 	},
