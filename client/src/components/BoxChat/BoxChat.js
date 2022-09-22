@@ -14,18 +14,7 @@ export default {
 			 * 		{ mess: String, userId: Integer, userName: String  }
 			 * ]
 			 */
-			messages: [
-				// {
-				// 	mess: 'hello client B',
-				// 	userId: 1,
-				// 	userName: 'A',
-				// },
-				// {
-				// 	mess: 'hello client A',
-				// 	userId: 2,
-				// 	userName: 'B',
-				// },
-			],
+			messages: [],
 			roomName: '',
 			roomId: '',
 			isSender: true,
@@ -35,15 +24,13 @@ export default {
 	methods: {
 		sendMess() {
 			let userId = parseInt(localStorage.getItem('userId'));
-			console.log('local data: ', { userId });
-
+			// let userName = localStorage.getItem('userName');
 			socketClient.emit('send_message', {
 				mess: this.newText,
 				room_name: this.roomName,
 				user_id: userId,
 			});
 
-			// if ((userId = user_id))
 			console.log({
 				mess: this.newText,
 				room_name: this.roomName,
@@ -62,9 +49,12 @@ export default {
 		},
 
 		listener(...content) {
-			console.log('content:', content);
-			console.log('content2');
-			this.messages.push(JSON.parse(content));
+			let receiverMess = JSON.parse(content);
+			this.messages.push({
+				mess: receiverMess.mess,
+				userId: receiverMess.user_id,
+				userName: receiverMess.user_name,
+			});
 		},
 	},
 
@@ -73,8 +63,6 @@ export default {
 		console.log('userid', { userId: this.userId });
 		// receive event, param from RoomList.js
 		this.emitter.on('on-transfer-room-data', async (roomData) => {
-			// console.log('roomData', roomData);
-
 			this.roomName = roomData.currentRoomName;
 			this.roomId = roomData.currentRoomId;
 			try {
@@ -84,19 +72,10 @@ export default {
 				console.log('Error roi ne: ', error);
 			}
 		});
-		// console.log(socketClient);
-		socketClient.on(
-			'receive_message',
-			this.listener
-			// console.log('nhan messages:', this.messages);
-		);
+		socketClient.on('receive_message', this.listener);
 	},
 
 	unmounted() {
-		socketClient.removeOn(
-			'receive_message',
-			this.listener
-			// console.log('sdfafas');
-		);
+		socketClient.removeOn('receive_message', this.listener);
 	},
 };

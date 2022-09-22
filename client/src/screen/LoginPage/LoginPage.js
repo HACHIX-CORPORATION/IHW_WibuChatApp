@@ -46,13 +46,13 @@ export default {
 					username: this.userName,
 					password: this.passWord,
 				});
-				console.log({ response });
+				console.log('Login response:', response);
 				// check status from response axios
 				if (response.status === 200) {
 					alert('Login succesfully');
 					// store data
 					localStorage.setItem('userId', response.data.id);
-					localStorage.setItem('userName', response.data.username);
+					// localStorage.setItem('userName', response.data.username);
 
 					this.$router.push({ name: 'Lobby' });
 				}
