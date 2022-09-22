@@ -36,8 +36,8 @@ export default {
 						let response = await ApiService.addNewRoom(newName);
 						console.log('response:', { reponse: response });
 						if (response.status === 200) {
-							this.rooms.push({ room_name: newName,  });
-							console.log({ asfasfs: this.rooms });
+							this.rooms.push({ room_name: newName });
+							console.log(`new room created`, this.rooms);
 						} else console.log('Them phong khong thanh cong');
 					} catch (error) {
 						console.log('Error', { error: error });

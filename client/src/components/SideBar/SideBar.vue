@@ -5,7 +5,7 @@
 				<a href="#">{{ title }}</a>
 				<RoomList
 					@addNewRoom="addNewroom"
-					:lists="rooms"
+					:roomLists="rooms"
 					:newroom="newRoom"
 				/>
 			</div>

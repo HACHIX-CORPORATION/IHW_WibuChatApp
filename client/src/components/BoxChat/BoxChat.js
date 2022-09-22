@@ -65,9 +65,18 @@ export default {
 		this.emitter.on('on-transfer-room-data', async (roomData) => {
 			this.roomName = roomData.currentRoomName;
 			this.roomId = roomData.currentRoomId;
+			this.messages = [];
+
 			try {
 				let response = await ApiService.getMessageOfRoom(this.roomId);
-				console.log('Response:', response);
+				console.log('All message API response:', response);
+				let allMessData = response.data;
+				for (let element of allMessData) {
+					this.messages.push({
+						mess: element.message,
+						userId: element.user_id,
+					});
+				}
 			} catch (error) {
 				console.log('Error roi ne: ', error);
 			}
