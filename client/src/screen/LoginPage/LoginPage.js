@@ -52,6 +52,8 @@ export default {
 					alert('Login succesfully');
 					// store data
 					localStorage.setItem('userId', response.data.id);
+					localStorage.setItem('userName', response.data.username);
+
 					this.$router.push({ name: 'Lobby' });
 				}
 			} catch (error) {

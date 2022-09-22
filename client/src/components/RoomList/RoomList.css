@@ -40,7 +40,7 @@
 	height: 750px;
 }
 
-.roomlist--new-added {
+.roomlist__item {
 	cursor: pointer;
 	border-radius: 10px;
 	padding: 10px 20px;
@@ -57,7 +57,10 @@
 	margin: 10px;
 }
 
-.roomlist--new-added::before {
+.roomlist__item--selected {
+	background-color: #5865f2;
+}
+.roomlist__item::before {
 	content: '';
 	width: 0;
 	height: 600%;
@@ -71,9 +74,9 @@
 	z-index: -1;
 }
 
-.roomlist--new-added:hover::before {
+.roomlist__item:hover::before {
 	width: 100%;
 }
-.roomlist--new-added:hover {
+.roomlist__item:hover {
 	color: white;
 }

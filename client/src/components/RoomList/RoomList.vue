@@ -15,7 +15,13 @@
 				v-for="(room, index) in lists"
 				:key="index"
 			>
-				<div class="roomlist--new-added" @click="onJoin(room)">
+				<div
+					class="roomlist__item"
+					@click="onJoin(room)"
+					:class="{
+						'roomlist__item--selected': room.room_id === selectedRoomId,
+					}"
+				>
 					{{ room.room_name }}
 				</div>
 			</div>

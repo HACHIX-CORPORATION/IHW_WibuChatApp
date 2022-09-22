@@ -5,13 +5,15 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import socketClient from './service/Socket.js';
+import mitt from 'mitt';
 
+const emitter = mitt();
 // connect socket when App start
 socketClient.setup();
 
 library.add(fas);
 
-createApp(App)
-	.component('fa', FontAwesomeIcon)
-	.use(router)
-	.mount('#app');
+const app = createApp(App).component('fa', FontAwesomeIcon).use(router);
+// use emitter (global event) to pass down (event, data) through several components (uneccessary from child-parent)
+app.config.globalProperties.emitter = emitter;
+app.mount('#app');
