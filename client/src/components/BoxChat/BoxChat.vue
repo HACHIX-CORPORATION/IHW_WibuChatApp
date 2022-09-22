@@ -16,8 +16,17 @@
 								'message--receiver': message.userId !== userId,
 							}"
 						>
-							<div class="message__text">{{ message.mess }}</div>
-							<img src="../../assets/hanezawa.jpg" alt="" />
+							<div class="message__text">
+								{{ message.mess }}
+							</div>
+							<div class="message--user">
+								<div class="user">
+									User :
+									{{ message.user_id }}
+									{{ message.userId }}
+								</div>
+								<img src="../../assets/hanezawa.jpg" alt="" />
+							</div>
 						</div>
 					</div>
 				</div>
