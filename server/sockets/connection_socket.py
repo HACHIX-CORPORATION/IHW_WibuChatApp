@@ -3,7 +3,7 @@ from email import charset
 from blueprints.messages.models import MessageModel
 from blueprints.rooms.models import RoomModel
 from blueprints.users.models import UserModel
-from flask_socketio import send, emit, join_room, SocketIO
+from flask_socketio import send, emit, join_room, SocketIO ,leave_room
 from flask import request, jsonify
 from app.app import app
 import json
@@ -52,6 +52,21 @@ def on_join(data):
         emit("new_join", user.username + " has joined the " +
              room_name + " room.", room=room_name)
         print("join successfull")
+    else:
+        print("Not found room")
+        send('Not found room')
+    
+@socketio.on('leave')
+def on_leave(data):
+    room_name = data['room_name']
+    user_id = data['user_id']
+    leave_room(room_name)
+    room_db = RoomModel.find_by_name(room_name)
+    user = UserModel.find_by_id(user_id)
+    if room_db and user:
+        emit("new_leave", user.username + " has leave the " +
+        room_name + " room.", room=room_name)
+        print("Leave successfull")
     else:
         print("Not found room")
         send('Not found room')
