@@ -21,9 +21,7 @@
 							</div>
 							<div class="message--user">
 								<div class="user">
-									User :
-									{{ message.user_id }}
-									{{ message.userId }}
+									{{ message.userName }}
 								</div>
 								<img src="../../assets/hanezawa.jpg" alt="" />
 							</div>
