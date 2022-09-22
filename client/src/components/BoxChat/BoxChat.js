@@ -50,11 +50,13 @@ export default {
 
 		listener(...content) {
 			let receiverMess = JSON.parse(content);
-			this.messages.push({
-				mess: receiverMess.mess,
-				userId: receiverMess.user_id,
-				userName: receiverMess.user_name,
-			});
+			if (receiverMess.room_id === this.roomId) {
+				this.messages.push({
+					mess: receiverMess.mess,
+					userId: receiverMess.user_id,
+					userName: receiverMess.user_name,
+				});
+			}
 		},
 	},
 
@@ -71,6 +73,7 @@ export default {
 				let response = await ApiService.getMessageOfRoom(this.roomId);
 				console.log('All message API response:', response);
 				let allMessData = response.data;
+
 				for (let element of allMessData) {
 					this.messages.push({
 						mess: element.message,
