@@ -50,11 +50,13 @@ export default {
 
 		listener(...content) {
 			let receiverMess = JSON.parse(content);
-			this.messages.push({
-				mess: receiverMess.mess,
-				userId: receiverMess.user_id,
-				userName: receiverMess.user_name,
-			});
+			if (receiverMess.room_id === this.roomId) {
+				this.messages.push({
+					mess: receiverMess.mess,
+					userId: receiverMess.user_id,
+					userName: receiverMess.user_name,
+				});
+			}
 		},
 	},
 
@@ -65,9 +67,19 @@ export default {
 		this.emitter.on('on-transfer-room-data', async (roomData) => {
 			this.roomName = roomData.currentRoomName;
 			this.roomId = roomData.currentRoomId;
+
 			try {
 				let response = await ApiService.getMessageOfRoom(this.roomId);
-				console.log('Response:', response);
+				console.log('API response:', response);
+				let allMessData = response.data;
+				let messageList = [];
+				for (let element of allMessData) {
+					messageList.push({
+						mess: element.message,
+						userId: element.user_id,
+					});
+				}
+				this.messages = messageList;
 			} catch (error) {
 				console.log('Error roi ne: ', error);
 			}

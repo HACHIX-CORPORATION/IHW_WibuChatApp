@@ -12,7 +12,7 @@
 			<!-- hien tat ca cac room co trong db  -->
 			<div
 				class="roomlist__container"
-				v-for="(room, index) in lists"
+				v-for="(room, index) in roomLists"
 				:key="index"
 			>
 				<div

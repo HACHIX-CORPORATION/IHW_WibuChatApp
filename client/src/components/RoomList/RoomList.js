@@ -6,7 +6,7 @@ export default {
 		newroom: {
 			type: String,
 		},
-		lists: {
+		roomLists: {
 			type: Array,
 		},
 	},
@@ -34,12 +34,13 @@ export default {
 			// get data from local storage to use
 			let userId = localStorage.getItem('userId');
 
+			
+
 			// send event, param to BoxChat.js
 			this.emitter.emit('on-transfer-room-data', {
 				currentRoomName: room.room_name,
 				currentRoomId: room.room_id,
 			});
-			// console.log(room);
 
 			this.selectedRoomId = room.room_id;
 
