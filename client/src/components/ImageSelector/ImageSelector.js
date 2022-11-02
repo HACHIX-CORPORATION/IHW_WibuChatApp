@@ -1,36 +1,11 @@
-export default {
-	name: 'ImageSelector',
-	props: {
-		caption: {
-			type: String,
-		},
-	},
-	data() {
-		return {
-			invalid: true,
-			imagePreview: '02.jpg',
-			images: [
-				{
-					id: 1,
+
 					url: '02.jpg',
 				},
 				{
 					id: 2,
 					url: 'akame.jpg',
 				},
-				{
-					id: 3,
-					url: 'aqua.jpg',
-				},
-				{
-					id: 4,
-					url: 'asuna.jpg',
-				},
-				{
-					id: 5,
-					url: 'dark_saber.jpg',
-				},
-				{
+				
 					id: 6,
 					url: 'hanezawa.jpg',
 				},
